@@ -13,7 +13,7 @@ export const brochureModels = [
   {
     id: "TRN-CLASSIC-SPORTS",
     name: "CLASSIC SPORTS",
-    badge: "PREMIUM ELECTRIC SCOOTER",
+    badge: "PREMIUM RETRO-MODERN EV",
     tagline: "Timeless elegance with next-generation electric efficiency",
     range: "150-175 KM*",
     topSpeed: "60 KM/H",
@@ -28,32 +28,28 @@ export const brochureModels = [
     image: "/images/scooters/classic_red.jpg",
     colorPalette: [
       { 
-        name: "Crimson Red (Classic)", 
+        name: "Red", 
         hex: "#dc2626", 
         image: "/images/scooters/classic_red.jpg",
-        caption: "Classic Sports in Crimson Metallic Red with Chrome Accents",
-        isRider: true
+        caption: "Classic Sports in Crimson Red Gloss Finish"
       },
       { 
-        name: "Obsidian Black", 
+        name: "Black", 
         hex: "#18181b", 
-        image: "/images/scooters/classic_black.jpg",
-        caption: "Classic Sports in Obsidian Black Dual Studio Edition",
-        isRider: false
+        image: "/images/scooters/classic_black_rider.jpg",
+        caption: "Classic Sports in Obsidian Black Gloss Finish"
       },
       { 
-        name: "Emerald Green", 
-        hex: "#047857", 
-        image: "/images/scooters/adventure_green.jpg",
-        caption: "Classic Sports in British Racing Emerald Green",
-        isRider: false
-      },
-      { 
-        name: "Titanium Silver", 
+        name: "Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/nexa_silver.jpg",
-        caption: "Classic Sports in Titanium Metallic Silver",
-        isRider: true
+        image: "/images/scooters/classic_grey.jpg",
+        caption: "Classic Sports in Titanium Silver Grey Finish"
+      },
+      { 
+        name: "Green", 
+        hex: "#047857", 
+        image: "/images/scooters/classic_green.jpg",
+        caption: "Classic Sports in British Racing Emerald Green Finish"
       }
     ],
     features: [
@@ -71,7 +67,7 @@ export const brochureModels = [
   {
     id: "TRN-NEXA",
     name: "NEXA",
-    badge: "PREMIUM ELECTRIC SCOOTER",
+    badge: "FLAGSHIP ADVENTURE MAXI-SCOOTER",
     tagline: "High-power highway cruiser built for ultimate touring endurance",
     range: "225-270 KM*",
     topSpeed: "70-80 KM/H",
@@ -86,32 +82,28 @@ export const brochureModels = [
     image: "/images/scooters/nexa_silver.jpg",
     colorPalette: [
       { 
-        name: "Titanium Silver (Nexa)", 
+        name: "Grey", 
         hex: "#94a3b8", 
         image: "/images/scooters/nexa_silver.jpg",
-        caption: "Nexa in Aerodynamic Titanium Silver with Touring Windshield",
-        isRider: true
+        caption: "Nexa in Aerodynamic Titanium Silver Grey"
       },
       { 
-        name: "Stealth Black", 
+        name: "Black", 
         hex: "#18181b", 
-        image: "/images/scooters/classic_black.jpg",
-        caption: "Nexa in Stealth Obsidian Black Finish",
-        isRider: false
+        image: "/images/scooters/nexa_black.jpg",
+        caption: "Nexa in Midnight Stealth Obsidian Black"
       },
       { 
-        name: "Crimson Red", 
+        name: "Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/classic_red.jpg",
-        caption: "Nexa in Crimson Touring Red",
-        isRider: true
+        image: "/images/scooters/nexa_red.jpg",
+        caption: "Nexa in Velocity Crimson Red"
       },
       { 
-        name: "Emerald Green", 
+        name: "Green", 
         hex: "#047857", 
-        image: "/images/scooters/adventure_green.jpg",
-        caption: "Nexa Adventure Pack in Emerald Green",
-        isRider: false
+        image: "/images/scooters/nexa_green.jpg",
+        caption: "Nexa in Adventure Emerald Racing Green"
       }
     ],
     features: [
@@ -128,7 +120,7 @@ export const brochureModels = [
   {
     id: "TRN-SPORTS",
     name: "SPORTS",
-    badge: "PREMIUM ELECTRIC SCOOTER",
+    badge: "AGGRESSIVE URBAN PERFORMER",
     tagline: "Sport-tuned acceleration and razor-sharp city dynamics",
     range: "150-175 KM*",
     topSpeed: "60 KM/H",
@@ -140,35 +132,31 @@ export const brochureModels = [
     category: "Sport Performance",
     startingPrice: "₹91,999",
     emiStarts: "₹2,199/mo",
-    image: "/images/scooters/classic_black.jpg",
+    image: "/images/scooters/sports_black.jpg",
     colorPalette: [
       { 
-        name: "Obsidian Black (Sports)", 
-        hex: "#18181b", 
-        image: "/images/scooters/classic_black.jpg",
-        caption: "Sports in Obsidian Matte Black with Orange Decals",
-        isRider: false
-      },
-      { 
-        name: "Track Red", 
+        name: "Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/classic_red.jpg",
-        caption: "Sports in Trackside Crimson Red",
-        isRider: true
+        image: "/images/scooters/sports_red.jpg",
+        caption: "Terron Sports in Rich Glossy Metallic Crimson Red"
       },
       { 
-        name: "Emerald Green", 
-        hex: "#047857", 
-        image: "/images/scooters/adventure_green.jpg",
-        caption: "Sports in Emerald Racing Green",
-        isRider: false
+        name: "Black", 
+        hex: "#18181b", 
+        image: "/images/scooters/sports_black.jpg",
+        caption: "Terron Sports in Obsidian Matte Black Dual Profile"
       },
       { 
-        name: "Titanium Silver", 
+        name: "Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/nexa_silver.jpg",
-        caption: "Sports in Aerodynamic Titanium Silver",
-        isRider: true
+        image: "/images/scooters/sports_grey.jpg",
+        caption: "Terron Sports in Titanium Metallic Silver Grey"
+      },
+      { 
+        name: "Green", 
+        hex: "#047857", 
+        image: "/images/scooters/sports_green.jpg",
+        caption: "Terron Sports in British Racing Emerald Green"
       }
     ],
     features: [
@@ -186,7 +174,7 @@ export const brochureModels = [
   {
     id: "TRN-TERRON-PLUS",
     name: "TERRON+",
-    badge: "PREMIUM ELECTRIC SCOOTER",
+    badge: "ULTRA LONG-RANGE GRAND TOURER",
     tagline: "Approx. 3 Hours (0-80%)* rapid charge and unmatched 270 KM touring range",
     range: "225-270 KM",
     topSpeed: "70-80 KM/H",
@@ -201,32 +189,28 @@ export const brochureModels = [
     image: "/images/scooters/adventure_green.jpg",
     colorPalette: [
       { 
-        name: "Emerald Green (Adventure)", 
+        name: "Green", 
         hex: "#047857", 
         image: "/images/scooters/adventure_green.jpg",
-        caption: "Terron+ in Emerald Green with Bull-Bars & Screen",
-        isRider: false
+        caption: "Terron+ in Rugged Emerald Green Adventure Finish"
       },
       { 
-        name: "Titanium Silver", 
-        hex: "#94a3b8", 
-        image: "/images/scooters/nexa_silver.jpg",
-        caption: "Terron+ in Titanium Metallic Long-Range Edition",
-        isRider: true
-      },
-      { 
-        name: "Crimson Red", 
-        hex: "#dc2626", 
-        image: "/images/scooters/classic_red.jpg",
-        caption: "Terron+ in Crimson Velocity",
-        isRider: true
-      },
-      { 
-        name: "Obsidian Black", 
+        name: "Black", 
         hex: "#18181b", 
-        image: "/images/scooters/classic_black.jpg",
-        caption: "Terron+ in Midnight Stealth Edition",
-        isRider: false
+        image: "/images/scooters/adventure_black.jpg",
+        caption: "Terron+ in Midnight Stealth Obsidian Black"
+      },
+      { 
+        name: "Grey", 
+        hex: "#94a3b8", 
+        image: "/images/scooters/adventure_grey.jpg",
+        caption: "Terron+ in Titanium Metallic Silver Grey"
+      },
+      { 
+        name: "Red", 
+        hex: "#dc2626", 
+        image: "/images/scooters/adventure_red.jpg",
+        caption: "Terron+ in Candy Crimson Velocity Red"
       }
     ],
     features: [

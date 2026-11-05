@@ -175,88 +175,85 @@ export default function Hero({ onOpenTestRide }) {
           </div>
         </div>
 
-        {/* The Auto-Sliding 4-Bike Carousel Card */}
-        <div className="bg-gradient-to-b from-[#15243C] to-[#0E1A2C] border border-[#1E3352] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-700">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* The Auto-Sliding 4-Bike Carousel Showcase */}
+        <div className="bg-gradient-to-b from-[#15243C] to-[#0E1A2C] border border-[#1E3352] rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-700">
+          
+          {/* TOP SECTION: Main Central Bike Visual in Whole Hero Stage */}
+          <div className="relative w-full rounded-2xl overflow-hidden bg-[#0a1422] border border-[#1E3352]/80 flex items-center justify-center min-h-[320px] sm:min-h-[460px] md:min-h-[500px] shadow-inner group">
+            {/* Ambient Spotlight & Ground Reflection */}
+            <div 
+              className="absolute bottom-4 w-3/4 h-24 rounded-[100%] blur-3xl opacity-60 transition-colors duration-1000 pointer-events-none"
+              style={{ backgroundColor: activeBike.badgeHex }}
+            />
             
-            {/* Left Column: Bike Details & Specs */}
-            <div className="lg:col-span-6 space-y-5 animate-fadeIn">
-              {/* Badge & Model Title */}
+            {/* Large Semi-Transparent Model Watermark in Background */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.05]">
+              <span className="text-7xl sm:text-9xl md:text-[13rem] font-black uppercase tracking-tighter text-white">
+                {activeBike.name.replace(' ', '')}
+              </span>
+            </div>
+
+            {/* ONLY BIKE IMAGE CHANGES IN WHOLE HERO STAGE */}
+            <div className="relative z-10 w-full h-full flex items-center justify-center p-4 sm:p-8">
+              <img
+                key={activeBike.image}
+                src={activeBike.image}
+                alt={`Terron ${activeBike.name}`}
+                className="max-h-[290px] sm:max-h-[420px] md:max-h-[460px] w-auto max-w-full object-contain rounded-2xl transition-all duration-700 animate-fadeIn drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
+              />
+            </div>
+
+            {/* Color & Model Badge Pill (Top-Left of Hero Image) */}
+            <div className="absolute top-4 left-4 z-20 bg-[#111E31]/90 backdrop-blur-md border border-[#1E3352] px-3.5 py-1.5 rounded-xl flex items-center space-x-2 shadow-lg">
+              <span className="w-3 h-3 rounded-full border border-white shadow-sm" style={{ backgroundColor: activeBike.badgeHex }} />
+              <span className="text-xs font-bold text-white tracking-wide">{activeBike.colorBadge}</span>
+            </div>
+
+            {/* Stage Left/Right Slide Arrows */}
+            <button
+              onClick={prevSlide}
+              aria-label="Previous Bike"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-[#111E31]/80 hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-[#EAB308] hover:border-[#EAB308]/60 transition-all shadow-xl active:scale-95"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            <button
+              onClick={nextSlide}
+              aria-label="Next Bike"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-[#111E31]/80 hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-[#EAB308] hover:border-[#EAB308]/60 transition-all shadow-xl active:scale-95"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </div>
+
+          {/* BELOW SECTION: Details Change in the Below Along with Bike Image */}
+          <div className="mt-6 sm:mt-8 space-y-6">
+            
+            {/* Row 1: Model Title, Subtitle, Pricing & CTAs */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-[#1E3352]/70">
               <div>
                 <div className="flex items-center space-x-2">
-                  <span 
-                    className="w-2.5 h-2.5 rounded-full shadow-sm"
-                    style={{ backgroundColor: activeBike.badgeHex }}
-                  />
                   <span className="text-xs font-bold uppercase tracking-widest text-[#EAB308]">
                     {activeBike.subtitle}
                   </span>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-xs text-[#CBD5E1]">SRIDEWI ENERGIES</span>
                 </div>
-
-                <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight mt-1 flex items-baseline space-x-3">
+                <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-1 flex items-baseline space-x-2">
                   <span className="text-[#CBD5E1]">TERRON</span>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EAB308] via-[#FBBF24] to-white">
                     {activeBike.name}
                   </span>
                 </h2>
-
-                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed max-w-lg">
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
                   {activeBike.tagline}
                 </p>
               </div>
 
-              {/* 4 Core Performance Pillars */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-                <div className="bg-[#0E1A2C] p-3 rounded-2xl border border-[#1E3352]">
-                  <div className="flex items-center space-x-1 text-slate-400 text-[10px] font-bold uppercase mb-0.5">
-                    <Compass className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>Range</span>
-                  </div>
-                  <span className="text-base sm:text-lg font-black text-[#38BDF8] block">{activeBike.range}</span>
-                </div>
-
-                <div className="bg-[#0E1A2C] p-3 rounded-2xl border border-[#1E3352]">
-                  <div className="flex items-center space-x-1 text-slate-400 text-[10px] font-bold uppercase mb-0.5">
-                    <Gauge className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>Top Speed</span>
-                  </div>
-                  <span className="text-base sm:text-lg font-black text-white block">{activeBike.topSpeed}</span>
-                </div>
-
-                <div className="bg-[#0E1A2C] p-3 rounded-2xl border border-[#1E3352]">
-                  <div className="flex items-center space-x-1 text-slate-400 text-[10px] font-bold uppercase mb-0.5">
-                    <Zap className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>Motor</span>
-                  </div>
-                  <span className="text-base sm:text-lg font-black text-white block">{activeBike.motor}</span>
-                </div>
-
-                <div className="bg-[#0E1A2C] p-3 rounded-2xl border border-[#1E3352]">
-                  <div className="flex items-center space-x-1 text-slate-400 text-[10px] font-bold uppercase mb-0.5">
-                    <Clock className="w-3.5 h-3.5 text-[#EAB308]" />
-                    <span>Charging</span>
-                  </div>
-                  <span className="text-xs sm:text-sm font-bold text-[#EAB308] block truncate">{activeBike.charging}</span>
-                </div>
-              </div>
-
-              {/* Engineering Highlights List */}
-              <div className="bg-[#0E1A2C]/80 p-3.5 rounded-2xl border border-[#1E3352] space-y-1.5 text-xs text-slate-300">
-                <span className="text-[10px] uppercase font-bold text-[#CBD5E1] tracking-wider block mb-1">
-                  Standard Factory Equipment:
-                </span>
-                {activeBike.highlights.map((h, i) => (
-                  <div key={i} className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
-                    <span className="text-slate-200">{h}</span>
-                  </div>
-                ))}
-              </div>
-
               {/* Price & Primary Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 shrink-0">
+                <div className="text-left sm:text-right">
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
                     Starting Ex-Showroom
                   </span>
                   <div className="flex items-baseline space-x-2">
@@ -265,13 +262,13 @@ export default function Hero({ onOpenTestRide }) {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-2.5">
+                <div className="flex items-center space-x-2 pt-1 sm:pt-0">
                   <button
                     onClick={() => {
                       triggerHaptic(30);
                       onOpenTestRide(activeBike.name);
                     }}
-                    className="flex-1 sm:flex-none px-6 py-3 rounded-xl font-black text-xs uppercase tracking-wider bg-gradient-to-r from-[#EAB308] via-[#FBBF24] to-[#CA8A04] hover:from-[#FBBF24] hover:to-[#EAB308] text-slate-950 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-[#EAB308]/25"
+                    className="px-6 py-3 rounded-xl font-black text-xs uppercase tracking-wider bg-gradient-to-r from-[#EAB308] via-[#FBBF24] to-[#CA8A04] hover:from-[#FBBF24] hover:to-[#EAB308] text-slate-950 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-[#EAB308]/25 active:scale-95"
                   >
                     <span>Book Test Ride</span>
                     <ArrowRight className="w-4 h-4" />
@@ -287,72 +284,69 @@ export default function Hero({ onOpenTestRide }) {
               </div>
             </div>
 
-            {/* Right Column: Hero Visual Showcase */}
-            <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[420px]">
-              {/* Ground Reflection / Glow */}
-              <div 
-                className="absolute bottom-2 w-4/5 h-16 rounded-[100%] blur-2xl opacity-70 transition-all duration-700 pointer-events-none"
-                style={{ backgroundColor: activeBike.badgeHex }}
-              />
-
-              {/* Real Scooter Photo with Natural Rider & Bike Presentation */}
-              <div className="relative z-10 w-full overflow-hidden rounded-3xl border border-[#1E3352] shadow-2xl bg-[#0E1A2C]/60 group">
-                <img
-                  key={activeBike.image}
-                  src={activeBike.image}
-                  alt={`Terron ${activeBike.name}`}
-                  className="w-full h-72 sm:h-96 object-cover object-center rounded-3xl transition-transform duration-700 group-hover:scale-105"
-                />
-
-                {/* Color Pill Tag */}
-                <div className="absolute bottom-3 left-3 bg-[#111E31]/85 backdrop-blur-md border border-[#1E3352] px-3 py-1.5 rounded-xl flex items-center space-x-2">
-                  <span className="w-3 h-3 rounded-full border border-white" style={{ backgroundColor: activeBike.badgeHex }} />
-                  <span className="text-xs font-bold text-white">{activeBike.colorBadge}</span>
+            {/* Row 2: 4 Core Performance Pillars Below the Bike */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="bg-[#0E1A2C] p-3.5 rounded-2xl border border-[#1E3352]">
+                <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] font-bold uppercase mb-1">
+                  <Compass className="w-3.5 h-3.5 text-[#38BDF8]" />
+                  <span>Tested Range</span>
                 </div>
+                <span className="text-lg sm:text-xl font-black text-[#38BDF8] block">{activeBike.range}</span>
+              </div>
+
+              <div className="bg-[#0E1A2C] p-3.5 rounded-2xl border border-[#1E3352]">
+                <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] font-bold uppercase mb-1">
+                  <Gauge className="w-3.5 h-3.5 text-[#38BDF8]" />
+                  <span>Top Speed</span>
+                </div>
+                <span className="text-lg sm:text-xl font-black text-white block">{activeBike.topSpeed}</span>
+              </div>
+
+              <div className="bg-[#0E1A2C] p-3.5 rounded-2xl border border-[#1E3352]">
+                <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] font-bold uppercase mb-1">
+                  <Zap className="w-3.5 h-3.5 text-[#38BDF8]" />
+                  <span>Motor Output</span>
+                </div>
+                <span className="text-lg sm:text-xl font-black text-white block">{activeBike.motor}</span>
+              </div>
+
+              <div className="bg-[#0E1A2C] p-3.5 rounded-2xl border border-[#1E3352]">
+                <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] font-bold uppercase mb-1">
+                  <Clock className="w-3.5 h-3.5 text-[#EAB308]" />
+                  <span>Charging Time</span>
+                </div>
+                <span className="text-xs sm:text-sm font-bold text-[#EAB308] block truncate mt-0.5">{activeBike.charging}</span>
               </div>
             </div>
-          </div>
 
-          {/* Navigation Controls & Carousel Progress Indicator */}
-          <div className="mt-8 pt-6 border-t border-[#1E3352] flex items-center justify-between">
-            {/* 4 Interactive Bike Dots */}
-            <div className="flex items-center space-x-2 sm:space-x-3">
-              {heroBikes.map((bike, idx) => (
-                <button
-                  key={bike.id}
-                  onClick={() => goToSlide(idx)}
-                  className={`flex items-center space-x-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    currentSlide === idx
-                      ? 'bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-slate-950 font-black shadow-md shadow-[#EAB308]/30 scale-105'
-                      : 'bg-[#0E1A2C] text-[#CBD5E1] hover:text-white border border-[#1E3352]'
-                  }`}
-                >
-                  <span 
-                    className="w-2 h-2 rounded-full" 
-                    style={{ backgroundColor: bike.badgeHex }} 
-                  />
-                  <span>{bike.name}</span>
-                </button>
-              ))}
+            {/* Row 3: 4 Bike Selector Tabs & Auto-slide Indicator */}
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none">
+                {heroBikes.map((bike, idx) => (
+                  <button
+                    key={bike.id}
+                    onClick={() => goToSlide(idx)}
+                    className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                      currentSlide === idx
+                        ? 'bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-slate-950 font-black shadow-lg shadow-[#EAB308]/30 scale-105'
+                        : 'bg-[#0E1A2C] text-[#CBD5E1] hover:text-white border border-[#1E3352]'
+                    }`}
+                  >
+                    <span 
+                      className="w-2.5 h-2.5 rounded-full" 
+                      style={{ backgroundColor: bike.badgeHex }} 
+                    />
+                    <span>{bike.name}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="text-[11px] text-[#CBD5E1] flex items-center space-x-2 self-end sm:self-auto">
+                <span className="w-2 h-2 rounded-full bg-[#EAB308] animate-pulse" />
+                <span>Auto-cycling through 4 models (every 4.5s)</span>
+              </div>
             </div>
 
-            {/* Prev / Next Slide Arrows */}
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={prevSlide}
-                aria-label="Previous Slide"
-                className="p-2.5 rounded-xl bg-[#0E1A2C] hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-white transition-colors"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={nextSlide}
-                aria-label="Next Slide"
-                className="p-2.5 rounded-xl bg-[#0E1A2C] hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-white transition-colors"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

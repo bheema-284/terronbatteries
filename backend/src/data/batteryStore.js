@@ -18,10 +18,10 @@ const evModels = [
     category: "City Commuter",
     startingPrice: "₹89,999",
     colors: [
-      { name: "Crimson Red (Classic)", hex: "#dc2626" },
-      { name: "Obsidian Black", hex: "#18181b" },
-      { name: "Emerald Green", hex: "#047857" },
-      { name: "Titanium Silver", hex: "#94a3b8" }
+      { name: "Red", hex: "#dc2626" },
+      { name: "Black", hex: "#18181b" },
+      { name: "Grey", hex: "#94a3b8" },
+      { name: "Green", hex: "#047857" }
     ],
     features: [
       "Cruise Control",
@@ -50,10 +50,10 @@ const evModels = [
     category: "Maxi Adventure",
     startingPrice: "₹1,19,999",
     colors: [
-      { name: "Titanium Silver (Nexa)", hex: "#94a3b8" },
-      { name: "Obsidian Black", hex: "#18181b" },
-      { name: "Crimson Red", hex: "#dc2626" },
-      { name: "Emerald Green", hex: "#047857" }
+      { name: "Grey", hex: "#94a3b8" },
+      { name: "Black", hex: "#18181b" },
+      { name: "Red", hex: "#dc2626" },
+      { name: "Green", hex: "#047857" }
     ],
     features: [
       "Tall Touring Aerodynamic Windshield",
@@ -81,10 +81,10 @@ const evModels = [
     category: "Sport Performance",
     startingPrice: "₹91,999",
     colors: [
-      { name: "Obsidian Black (Sports)", hex: "#18181b" },
-      { name: "Crimson Red", hex: "#dc2626" },
-      { name: "Emerald Green", hex: "#047857" },
-      { name: "Titanium Silver", hex: "#94a3b8" }
+      { name: "Red", hex: "#dc2626" },
+      { name: "Black", hex: "#18181b" },
+      { name: "Grey", hex: "#94a3b8" },
+      { name: "Green", hex: "#047857" }
     ],
     features: [
       "Sport-Tuned Acceleration",
@@ -113,10 +113,10 @@ const evModels = [
     category: "Grand Tourer",
     startingPrice: "₹1,29,999",
     colors: [
-      { name: "Emerald Green (Adventure)", hex: "#047857" },
-      { name: "Titanium Silver", hex: "#94a3b8" },
-      { name: "Crimson Red", hex: "#dc2626" },
-      { name: "Obsidian Black", hex: "#18181b" }
+      { name: "Green", hex: "#047857" },
+      { name: "Black", hex: "#18181b" },
+      { name: "Grey", hex: "#94a3b8" },
+      { name: "Red", hex: "#dc2626" }
     ],
     features: [
       "Fast Charging: 0-80% in Approx 3 Hours*",
