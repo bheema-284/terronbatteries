@@ -3,7 +3,7 @@ import { Quote, Award, Sparkles, Building2 } from 'lucide-react';
 
 export default function FoundersMessage() {
   return (
-    <section id="founder" className="py-20 bg-gradient-to-b from-[#081326] via-[#0c1b33] to-[#081326] relative overflow-hidden">
+    <section id="founder" className="py-20 bg-[#111E31] relative overflow-hidden">
       {/* Decorative ambient curves */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">

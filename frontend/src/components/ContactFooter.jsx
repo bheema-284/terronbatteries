@@ -17,7 +17,7 @@ export default function ContactFooter() {
   };
 
   return (
-    <footer id="contact" className="bg-[#050c18] border-t border-slate-800 text-slate-300 pt-16 pb-28 md:pb-12 relative overflow-hidden">
+    <footer id="contact" className="bg-[#0b1523] border-t border-[#233d62] text-slate-300 pt-16 pb-28 md:pb-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top "Thank YOU" Banner matching Page 9 */}
         <div className="text-center mb-12">

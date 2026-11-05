@@ -14,9 +14,10 @@ import {
   ArrowRight,
   Maximize2,
   CreditCard,
-  Eye
+  Eye,
+  Info
 } from 'lucide-react';
-import { brochureModels } from '../services/api';
+import { brochureModels, LOGO_BG_COLOR } from '../services/api';
 import { triggerHaptic, shareScooter } from '../services/mobileService';
 import { playMotorRev } from '../services/soundService';
 
@@ -61,10 +62,10 @@ export default function ScooterShowcase({ onOpenTestRide }) {
   };
 
   return (
-    <section id="models" className="py-16 sm:py-24 bg-[#081326] relative overflow-hidden">
-      {/* Background ambient lighting */}
+    <section id="models" className="py-16 sm:py-24 bg-[#111E31] relative overflow-hidden">
+      {/* Background ambient lighting matching chosen color */}
       <div 
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-[160px] opacity-20 pointer-events-none transition-colors duration-700"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-[170px] opacity-20 pointer-events-none transition-colors duration-700"
         style={{ backgroundColor: activeColor.hex }}
       />
 
@@ -72,17 +73,17 @@ export default function ScooterShowcase({ onOpenTestRide }) {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="text-[11px] font-bold uppercase tracking-widest text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1 rounded-full">
-            INTERACTIVE STUDIO CONFIGURATOR
+            OFFICIAL COLOUR CONFIGURATOR
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 tracking-tight">
-            CUSTOMIZE YOUR RIDE
+            SELECT COLOUR & SPECIFICATION
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-2">
-            Click on any color below to preview official paint finishes. Designed with Royal Enfield-grade craftsmanship and next-gen electric powertrains.
+            Switch between models and real factory finishes. The red edition is the <strong>Classic</strong> and the Emerald Green is the rugged <strong>Adventure</strong> bike.
           </p>
         </div>
 
-        {/* Top 5 Model Tabs */}
+        {/* Model Selector Tabs */}
         <div className="flex items-center justify-start sm:justify-center space-x-2.5 overflow-x-auto pb-4 scrollbar-none">
           {brochureModels.map((m) => {
             const isSelected = m.id === activeModel.id;
@@ -93,7 +94,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                 className={`px-5 py-2.5 rounded-2xl font-black text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap transition-all shrink-0 ${
                   isSelected
                     ? 'bg-gradient-to-r from-sky-400 to-blue-600 text-slate-950 shadow-xl shadow-sky-500/30 scale-105'
-                    : 'bg-[#0b1b36] text-slate-300 border border-slate-800 hover:border-slate-700'
+                    : 'bg-[#16273f] text-slate-300 border border-[#233d62] hover:border-sky-500/50'
                 }`}
               >
                 {m.name}
@@ -103,9 +104,9 @@ export default function ScooterShowcase({ onOpenTestRide }) {
         </div>
 
         {/* Main Studio Display Stage */}
-        <div className="mt-8 bg-gradient-to-b from-[#0c1d38] via-[#09152b] to-[#071021] border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
-          {/* Top Bar inside Stage: Model Title, Price, View Toggle */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800/80 gap-4">
+        <div className="mt-8 bg-gradient-to-b from-[#16273f] via-[#111E31] to-[#0d1828] border border-[#233d62] rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+          {/* Top Bar: Model Badge, Ex-showroom Price, View Switcher */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#233d62]/80 gap-4">
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-xs font-bold uppercase tracking-widest text-sky-400 bg-sky-500/10 px-2.5 py-0.5 rounded-md border border-sky-500/20">
@@ -118,16 +119,16 @@ export default function ScooterShowcase({ onOpenTestRide }) {
               </h3>
             </div>
 
-            {/* Pricing & Royal Enfield Style EMI badge */}
+            {/* Pricing & EMI */}
             <div className="flex items-center space-x-4">
               <div className="text-right">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Starting At (Ex-Showroom)</span>
-                <span className="text-2xl font-black text-white">{activeModel.startingPrice}</span>
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Ex-Showroom Price</span>
+                <span className="text-2xl font-black text-white">{activeModel.startingPrice}*</span>
                 <span className="text-[11px] text-emerald-400 font-semibold block">EMI from {activeModel.emiStarts}</span>
               </div>
 
               {/* View Switcher: Studio Exterior vs Cockpit */}
-              <div className="flex bg-[#060e1c] p-1 rounded-xl border border-slate-800">
+              <div className="flex bg-[#0b1523] p-1 rounded-xl border border-[#233d62]">
                 <button
                   onClick={() => { triggerHaptic(15); setViewMode('studio'); }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 ${
@@ -152,29 +153,29 @@ export default function ScooterShowcase({ onOpenTestRide }) {
 
           {/* Visual Showcase Stage */}
           <div className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Center Stage: The Real Scooter Picture with color and lighting reflections */}
-            <div className="lg:col-span-8 flex flex-col items-center justify-center relative min-h-[380px] sm:min-h-[460px]">
-              {/* Studio Spotlight Podium Floor Effect */}
+            {/* Center Stage: The Real Scooter Picture */}
+            <div className="lg:col-span-8 flex flex-col items-center justify-center relative min-h-[360px] sm:min-h-[440px]">
+              {/* Studio Spotlight Podium Floor Glow */}
               <div 
-                className="absolute bottom-4 w-4/5 h-20 rounded-[100%] blur-xl opacity-60 transition-all duration-500 pointer-events-none"
+                className="absolute bottom-4 w-4/5 h-20 rounded-[100%] blur-2xl opacity-60 transition-all duration-500 pointer-events-none"
                 style={{ backgroundColor: activeColor.hex }}
               />
               <div className="absolute bottom-2 w-3/4 h-8 bg-black/60 rounded-[100%] blur-md pointer-events-none" />
 
               {viewMode === 'studio' ? (
-                /* Studio Real Scooter Photo */
+                /* Studio Real Scooter Photo - No filter on rider, authentic colours */
                 <div className="relative z-10 w-full flex flex-col items-center group">
-                  <div className="relative overflow-hidden rounded-3xl border border-slate-800/60 shadow-2xl bg-[#060e1c]/40 backdrop-blur-sm max-w-xl w-full">
+                  <div className="relative overflow-hidden rounded-3xl border border-[#233d62] shadow-2xl bg-[#0b1523]/50 backdrop-blur-sm max-w-xl w-full">
                     <img
                       key={activeColor.image + activeColor.name}
                       src={activeColor.image}
                       alt={`${activeModel.name} in ${activeColor.name}`}
-                      className="w-full h-72 sm:h-96 object-cover object-center rounded-3xl transition-all duration-500 hover:scale-105"
-                      style={{ filter: activeColor.filter || 'none' }}
+                      className="w-full h-72 sm:h-96 object-cover object-center rounded-3xl transition-transform duration-500 group-hover:scale-105"
+                      style={{ filter: 'none' }}
                     />
 
-                    {/* Color Name Watermark */}
-                    <div className="absolute bottom-3 left-3 bg-slate-950/80 backdrop-blur-md border border-slate-800 px-3 py-1.5 rounded-xl flex items-center space-x-2">
+                    {/* Color Swatch Badge on Image */}
+                    <div className="absolute bottom-3 left-3 bg-[#111E31]/85 backdrop-blur-md border border-[#233d62] px-3.5 py-1.5 rounded-xl flex items-center space-x-2">
                       <span className="w-3.5 h-3.5 rounded-full border border-white shadow-sm" style={{ backgroundColor: activeColor.hex }} />
                       <span className="text-xs font-bold text-white capitalize">{activeColor.name}</span>
                     </div>
@@ -183,7 +184,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                     <button
                       onClick={handleShare}
                       aria-label="Share Scooter"
-                      className="absolute top-3 right-3 p-2 bg-slate-950/70 hover:bg-slate-900 border border-slate-800 rounded-xl text-slate-300 hover:text-white transition-colors"
+                      className="absolute top-3 right-3 p-2 bg-[#111E31]/80 hover:bg-[#16273f] border border-[#233d62] rounded-xl text-slate-300 hover:text-white transition-colors"
                     >
                       <Share2 className="w-4 h-4" />
                     </button>
@@ -210,7 +211,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                   </div>
 
                   {/* Cockpit Sub-Gauges */}
-                  <div className="grid grid-cols-3 gap-2 text-xs bg-slate-900/80 p-3 rounded-2xl border border-slate-800">
+                  <div className="grid grid-cols-3 gap-2 text-xs bg-[#111E31] p-3 rounded-2xl border border-slate-800">
                     <div>
                       <span className="text-[10px] text-slate-400 uppercase block">Est Range</span>
                       <span className="font-extrabold text-emerald-400">{activeModel.range.split(' ')[0]} KM</span>
@@ -238,7 +239,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                   className={`flex items-center space-x-2 px-5 py-2.5 rounded-2xl text-xs font-bold transition-all shadow-lg ${
                     revving
                       ? 'bg-amber-400 text-slate-950 scale-105 shadow-amber-400/50'
-                      : 'bg-slate-900 hover:bg-slate-800 text-sky-400 border border-slate-700'
+                      : 'bg-[#0b1523] hover:bg-[#16273f] text-sky-400 border border-[#233d62]'
                   }`}
                 >
                   <Volume2 className={`w-4 h-4 ${revving ? 'animate-bounce' : ''}`} />
@@ -247,13 +248,13 @@ export default function ScooterShowcase({ onOpenTestRide }) {
               </div>
             </div>
 
-            {/* Right Column: Interactive Color Chooser & Specifications */}
+            {/* Right Column: Color Swatches & Specifications */}
             <div className="lg:col-span-4 space-y-6">
               {/* Color Chooser Card */}
-              <div className="bg-[#060e1c] p-5 rounded-2xl border border-slate-800 shadow-xl">
+              <div className="bg-[#0b1523] p-5 rounded-2xl border border-[#233d62] shadow-xl">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                    Select Colorway
+                    Click Color to Apply
                   </span>
                   <span className="text-xs font-bold text-sky-400 capitalize">
                     {activeColor.name}
@@ -266,10 +267,11 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                     <button
                       key={idx}
                       onClick={() => handleSelectColor(idx)}
+                      title={col.name}
                       aria-label={`Select ${col.name}`}
-                      className={`relative w-9 h-9 rounded-full transition-all border-2 ${
+                      className={`relative w-10 h-10 rounded-full transition-all border-2 ${
                         selectedColorIndex === idx
-                          ? 'scale-125 border-white ring-2 ring-sky-400 shadow-lg'
+                          ? 'scale-125 border-white ring-2 ring-sky-400 shadow-xl'
                           : 'border-slate-700 hover:scale-110 opacity-70 hover:opacity-100'
                       }`}
                       style={{ backgroundColor: col.hex }}
@@ -281,14 +283,20 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                   ))}
                 </div>
 
-                <p className="text-[11px] text-slate-400 mt-3">
-                  Premium multi-coat automotive gloss with anti-scratch UV clearcoat.
-                </p>
+                <div className="mt-3.5 pt-3 border-t border-[#233d62] text-[11px] text-slate-400 flex items-center space-x-2">
+                  <Info className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>
+                    {activeColor.name.includes('Red') && 'Crimson Red: Official Classic Scooter.'}
+                    {activeColor.name.includes('Green') && 'Emerald Green: Official Adventure Bike.'}
+                    {activeColor.name.includes('Black') && 'Obsidian Black: Dual Studio Finish.'}
+                    {activeColor.name.includes('Silver') && 'Titanium Silver: Nexa Maxi-Tourer.'}
+                  </span>
+                </div>
               </div>
 
               {/* Performance Metrics */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-[#060e1c] p-3.5 rounded-xl border border-slate-800">
+                <div className="bg-[#0b1523] p-3.5 rounded-xl border border-[#233d62]">
                   <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] uppercase font-bold mb-1">
                     <Compass className="w-3.5 h-3.5 text-sky-400" />
                     <span>Tested Range</span>
@@ -296,7 +304,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                   <span className="text-xl font-black text-white">{activeModel.range}</span>
                 </div>
 
-                <div className="bg-[#060e1c] p-3.5 rounded-xl border border-slate-800">
+                <div className="bg-[#0b1523] p-3.5 rounded-xl border border-[#233d62]">
                   <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] uppercase font-bold mb-1">
                     <Gauge className="w-3.5 h-3.5 text-sky-400" />
                     <span>Top Speed</span>
@@ -304,7 +312,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                   <span className="text-xl font-black text-white">{activeModel.topSpeed}</span>
                 </div>
 
-                <div className="bg-[#060e1c] p-3.5 rounded-xl border border-slate-800">
+                <div className="bg-[#0b1523] p-3.5 rounded-xl border border-[#233d62]">
                   <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] uppercase font-bold mb-1">
                     <Zap className="w-3.5 h-3.5 text-sky-400" />
                     <span>Motor Power</span>
@@ -312,7 +320,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                   <span className="text-lg font-black text-white">{activeModel.motor}</span>
                 </div>
 
-                <div className="bg-[#060e1c] p-3.5 rounded-xl border border-slate-800">
+                <div className="bg-[#0b1523] p-3.5 rounded-xl border border-[#233d62]">
                   <div className="flex items-center space-x-1.5 text-slate-400 text-[10px] uppercase font-bold mb-1">
                     <Clock className="w-3.5 h-3.5 text-amber-400" />
                     <span>Charging</span>
@@ -339,7 +347,7 @@ export default function ScooterShowcase({ onOpenTestRide }) {
                     triggerHaptic(25);
                     onOpenTestRide(activeModel.name);
                   }}
-                  className="w-full py-2.5 rounded-xl font-bold text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition-all flex items-center justify-center space-x-1.5"
+                  className="w-full py-2.5 rounded-xl font-bold text-xs bg-[#0b1523] hover:bg-[#16273f] text-slate-300 border border-[#233d62] transition-all flex items-center justify-center space-x-1.5"
                 >
                   <CreditCard className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Reserve Now for ₹999 (100% Refundable)</span>

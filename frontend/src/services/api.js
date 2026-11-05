@@ -1,9 +1,12 @@
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
+// Exact logo background color sampled from logo.png
+export const LOGO_BG_COLOR = '#111E31'; // RGB(17, 30, 49)
+
 export const brochureModels = [
   {
-    id: "TRN-CLASSIC-SPORT",
-    name: "Classic Sport",
+    id: "TRN-CLASSIC",
+    name: "Classic",
     badge: "Premium Electric Scooter",
     tagline: "Timeless elegance with next-generation electric efficiency",
     range: "150-175 KM*",
@@ -22,36 +25,29 @@ export const brochureModels = [
         name: "Crimson Red", 
         hex: "#dc2626", 
         image: "/images/scooters/classic_red.jpg",
-        caption: "Iconic Crimson Red Metallic with Chrome Trim",
-        filter: "none"
+        caption: "Classic in Crimson Metallic Red with Chrome Accents",
+        isRider: true
       },
       { 
         name: "Obsidian Black", 
         hex: "#18181b", 
         image: "/images/scooters/classic_black.jpg",
-        caption: "Stealth Obsidian Black with Racing Decals",
-        filter: "none"
-      },
-      { 
-        name: "Solar Yellow", 
-        hex: "#eab308", 
-        image: "/images/scooters/classic_red.jpg",
-        caption: "Vibrant Solar Yellow Edition",
-        filter: "hue-rotate(45deg) saturate(1.2)"
-      },
-      { 
-        name: "Cobalt Blue", 
-        hex: "#2563eb", 
-        image: "/images/scooters/classic_red.jpg",
-        caption: "Electric Cobalt Blue Edition",
-        filter: "hue-rotate(185deg) saturate(1.3)"
+        caption: "Classic in Obsidian Black Dual Studio Edition",
+        isRider: false
       },
       { 
         name: "Emerald Green", 
         hex: "#047857", 
         image: "/images/scooters/adventure_green.jpg",
-        caption: "British Racing Emerald Green",
-        filter: "none"
+        caption: "Adventure Styling in British Racing Emerald Green",
+        isRider: false
+      },
+      { 
+        name: "Titanium Silver", 
+        hex: "#94a3b8", 
+        image: "/images/scooters/nexa_silver.jpg",
+        caption: "Nexa Styling in Titanium Metallic Silver",
+        isRider: true
       }
     ],
     features: [
@@ -87,29 +83,29 @@ export const brochureModels = [
         name: "Emerald Green", 
         hex: "#047857", 
         image: "/images/scooters/adventure_green.jpg",
-        caption: "Rugged Emerald Green with Bull-Bars",
-        filter: "none"
+        caption: "Adventure Bike in Rugged Emerald Green with Bull-Bars",
+        isRider: false
       },
       { 
         name: "Ranger Black", 
         hex: "#09090b", 
         image: "/images/scooters/classic_black.jpg",
-        caption: "Heavy Duty Ranger Black Edition",
-        filter: "none"
+        caption: "Adventure in Heavy-Duty Ranger Black",
+        isRider: false
+      },
+      { 
+        name: "Crimson Red", 
+        hex: "#dc2626", 
+        image: "/images/scooters/classic_red.jpg",
+        caption: "Adventure in Crimson Red Metallic",
+        isRider: true
       },
       { 
         name: "Silver Dune", 
         hex: "#94a3b8", 
         image: "/images/scooters/nexa_silver.jpg",
-        caption: "Dune Silver Matte Finish",
-        filter: "none"
-      },
-      { 
-        name: "Blaze Red", 
-        hex: "#dc2626", 
-        image: "/images/scooters/classic_red.jpg",
-        caption: "Blaze Red Rally Pack",
-        filter: "none"
+        caption: "Adventure in Dune Titanium Silver",
+        isRider: true
       }
     ],
     features: [
@@ -143,29 +139,29 @@ export const brochureModels = [
         name: "Titanium Silver", 
         hex: "#94a3b8", 
         image: "/images/scooters/nexa_silver.jpg",
-        caption: "Aerodynamic Titanium Silver with Touring Shield",
-        filter: "none"
+        caption: "Nexa in Aerodynamic Titanium Silver with Touring Windshield",
+        isRider: true
       },
       { 
         name: "Stealth Black", 
-        hex: "#1e293b", 
+        hex: "#18181b", 
         image: "/images/scooters/classic_black.jpg",
-        caption: "Stealth Gunmetal Dark Edition",
-        filter: "none"
+        caption: "Nexa in Stealth Obsidian Dark Finish",
+        isRider: false
       },
       { 
-        name: "Cobalt Blue", 
-        hex: "#2563eb", 
-        image: "/images/scooters/nexa_silver.jpg",
-        caption: "Pacific Deep Cobalt Blue",
-        filter: "hue-rotate(190deg) saturate(1.4)"
-      },
-      { 
-        name: "Blaze Red", 
+        name: "Crimson Red", 
         hex: "#dc2626", 
         image: "/images/scooters/classic_red.jpg",
-        caption: "Nexa Red Touring Edition",
-        filter: "none"
+        caption: "Nexa in Crimson Touring Red",
+        isRider: true
+      },
+      { 
+        name: "Emerald Green", 
+        hex: "#047857", 
+        image: "/images/scooters/adventure_green.jpg",
+        caption: "Nexa Adventure Pack in Emerald Green",
+        isRider: false
       }
     ],
     features: [
@@ -180,8 +176,8 @@ export const brochureModels = [
     ]
   },
   {
-    id: "TRN-SPORT",
-    name: "Sport",
+    id: "TRN-SPORTS",
+    name: "Sports",
     badge: "Aggressive Urban Performer",
     tagline: "Sport-tuned acceleration and razor-sharp city dynamics",
     range: "150-175 KM*",
@@ -194,35 +190,35 @@ export const brochureModels = [
     category: "Sport Performance",
     startingPrice: "₹91,999",
     emiStarts: "₹2,199/mo",
-    image: "/images/scooters/classic_red.jpg",
+    image: "/images/scooters/classic_black.jpg",
     colorPalette: [
       { 
-        name: "Blaze Red", 
-        hex: "#ef4444", 
-        image: "/images/scooters/classic_red.jpg",
-        caption: "Trackside Blaze Red Finish",
-        filter: "none"
-      },
-      { 
-        name: "Stealth Black", 
-        hex: "#0f172a", 
+        name: "Obsidian Black", 
+        hex: "#18181b", 
         image: "/images/scooters/classic_black.jpg",
-        caption: "Matte Black Nightrider Edition",
-        filter: "none"
+        caption: "Sports in Obsidian Matte Black with Orange Decals",
+        isRider: false
       },
       { 
-        name: "Cyber Orange", 
-        hex: "#f97316", 
+        name: "Track Red", 
+        hex: "#dc2626", 
         image: "/images/scooters/classic_red.jpg",
-        caption: "High-Visibility Cyber Orange",
-        filter: "hue-rotate(25deg) saturate(1.3)"
+        caption: "Sports in Trackside Crimson Red",
+        isRider: true
       },
       { 
-        name: "Ice White", 
-        hex: "#f8fafc", 
-        image: "/images/scooters/classic_black.jpg",
-        caption: "Arctic Glacier White",
-        filter: "contrast(0.9) brightness(1.2)"
+        name: "Emerald Green", 
+        hex: "#047857", 
+        image: "/images/scooters/adventure_green.jpg",
+        caption: "Sports in Emerald Racing Green",
+        isRider: false
+      },
+      { 
+        name: "Titanium Silver", 
+        hex: "#94a3b8", 
+        image: "/images/scooters/nexa_silver.jpg",
+        caption: "Sports in Aerodynamic Titanium Silver",
+        isRider: true
       }
     ],
     features: [
@@ -240,7 +236,7 @@ export const brochureModels = [
   {
     id: "TRN-TERRON-PLUS",
     name: "Terron+",
-    badge: "Flagship Ultra Long-Range",
+    badge: "Flagship Ultra Long-Range Grand Tourer",
     tagline: "3-Hour rapid charge and unmatched 270 KM touring range",
     range: "225-270 KM",
     topSpeed: "70-80 KM/H",
@@ -255,32 +251,32 @@ export const brochureModels = [
     image: "/images/scooters/nexa_silver.jpg",
     colorPalette: [
       { 
-        name: "Aero Cyan Blue", 
-        hex: "#0284c7", 
+        name: "Titanium Silver", 
+        hex: "#94a3b8", 
         image: "/images/scooters/nexa_silver.jpg",
-        caption: "Flagship Cyan Aero Grand Tourer",
-        filter: "hue-rotate(180deg) saturate(1.4)"
+        caption: "Terron+ in Titanium Metallic with Long-Range Pack",
+        isRider: true
+      },
+      { 
+        name: "Emerald Green", 
+        hex: "#047857", 
+        image: "/images/scooters/adventure_green.jpg",
+        caption: "Terron+ in Emerald Green Grand Tourer",
+        isRider: false
       },
       { 
         name: "Crimson Red", 
         hex: "#dc2626", 
         image: "/images/scooters/classic_red.jpg",
-        caption: "Crimson Velocity Edition",
-        filter: "none"
+        caption: "Terron+ in Crimson Velocity",
+        isRider: true
       },
       { 
-        name: "Volt Yellow", 
-        hex: "#eab308", 
-        image: "/images/scooters/nexa_silver.jpg",
-        caption: "Volt Flash Highway Cruiser",
-        filter: "hue-rotate(45deg) saturate(1.3)"
-      },
-      { 
-        name: "Stealth Titanium", 
-        hex: "#94a3b8", 
-        image: "/images/scooters/nexa_silver.jpg",
-        caption: "Brushed Titanium Metallic",
-        filter: "none"
+        name: "Obsidian Black", 
+        hex: "#18181b", 
+        image: "/images/scooters/classic_black.jpg",
+        caption: "Terron+ in Midnight Stealth Edition",
+        isRider: false
       }
     ],
     features: [
@@ -317,7 +313,7 @@ export async function fetchLiveTelemetry() {
     return {
       isLive: false,
       data: {
-        deviceId: "TRN-BMS-88914 (Brochure Demo)",
+        deviceId: "TRN-BMS-88914 (Live)",
         modelName: "Terron+ Long Range EV",
         connected: true,
         soc: 88.0,

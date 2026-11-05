@@ -18,7 +18,7 @@ export default function CompareSection({ onOpenTestRide }) {
   );
 
   return (
-    <section id="compare" className="py-20 bg-[#081326] relative border-t border-slate-800/80">
+    <section id="compare" className="py-20 bg-[#111E31] relative border-t border-[#233d62]/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
