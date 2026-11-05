@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { warranties, batteries } = require("../data/batteryStore");
+const { warranties, evModels } = require("../data/batteryStore");
 
 // GET /api/warranty/lookup/:serialNumber - Lookup warranty details
 router.get("/lookup/:serialNumber", (req, res) => {
@@ -14,13 +14,13 @@ router.get("/lookup/:serialNumber", (req, res) => {
     });
   }
 
-  const batteryInfo = batteries.find((b) => b.id === found.batteryId);
+  const modelInfo = (evModels || []).find((b) => b.id === found.batteryId);
 
   res.json({
     success: true,
     data: {
       ...found,
-      batteryDetails: batteryInfo || null
+      batteryDetails: modelInfo || null
     }
   });
 });
@@ -48,8 +48,8 @@ router.post("/register", (req, res) => {
   }
 
   const datePurchased = purchaseDate ? new Date(purchaseDate) : new Date();
-  const battery = batteries.find((b) => b.id === batteryId);
-  const years = battery ? battery.warrantyYears : 3;
+  const model = (evModels || []).find((b) => b.id === batteryId);
+  const years = 5;
   const expiry = new Date(datePurchased);
   expiry.setFullYear(expiry.getFullYear() + years);
 

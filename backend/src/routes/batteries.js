@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { batteries } = require("../data/batteryStore");
+const { evModels } = require("../data/batteryStore");
 
-// GET /api/batteries - List all battery products with optional filtering by category
+// GET /api/batteries - List all Terron EV models
 router.get("/", (req, res) => {
   const { category, search } = req.query;
-  let result = [...batteries];
+  let result = [...evModels];
 
   if (category && category !== "All") {
     result = result.filter(
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
     result = result.filter(
       (b) =>
         b.name.toLowerCase().includes(q) ||
-        b.chemistry.toLowerCase().includes(q) ||
+        b.badge.toLowerCase().includes(q) ||
         b.category.toLowerCase().includes(q)
     );
   }
@@ -30,20 +30,19 @@ router.get("/", (req, res) => {
   });
 });
 
-// GET /api/batteries/:id - Get battery specifications by ID
+// GET /api/batteries/:id - Get specific EV model specs
 router.get("/:id", (req, res) => {
-  const battery = batteries.find((b) => b.id.toLowerCase() === req.params.id.toLowerCase());
-  if (!battery) {
+  const model = evModels.find((b) => b.id.toLowerCase() === req.params.id.toLowerCase());
+  if (!model) {
     return res.status(404).json({
       success: false,
-      error: `Battery with id '${req.params.id}' not found`
+      error: `Model '${req.params.id}' not found`
     });
   }
   res.json({
     success: true,
-    data: battery
+    data: model
   });
 });
 
 module.exports = router;
-

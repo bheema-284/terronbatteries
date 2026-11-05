@@ -1,9 +1,41 @@
-# ⚡ Terron Batteries - Full-Stack & Mobile Platform
+# ⚡ TERRON EV MOBILITY - Official Web & Mobile Platform
+### SRIDEWI ENERGIES PRIVATE LIMITED (Hyderabad, India)
 
-A cross-platform battery management, telemetry, and enterprise warranty platform for **Terron Batteries**. Built with:
-- **Backend:** Node.js & Express RESTful API
-- **Frontend:** React (Vite) + Tailwind CSS + Lucide Icons
-- **Mobile (Android & iOS):** Capacitor 6 native container with native hardware plugins (Device, Haptics, Network, Status Bar, Preferences)
+A mobile-first, high-performance web platform and digital showroom for **TERRON EV MOBILITY**, designed and structured directly according to the official product brochure.
+
+---
+
+## 🛵 The Official 5 EV Models Lineup
+
+| Model | Range | Top Speed | Powertrain | Fast Charge | Chassis Focus |
+|---|---|---|---|---|---|
+| **CLASSIC SPORT** | 150-175 KM* | 60 KM/H | 4.5 KW | Approx. 5-6 Hrs | Timeless urban commuter with retro-modern front apron & chrome accents |
+| **SPORT** | 150-175 KM* | 60 KM/H | 4.5 KW | Approx. 5-6 Hrs | High-agility sport ergonomics, exposed handlebars, 150KG load capacity |
+| **NEXA** | 225-270 KM* | 70-80 KM/H | 6.5 KW \| 8 KW | Approx. 5-6 Hrs | Maxi adventure touring with windscreen, projector LEDs & all-terrain tyres |
+| **ADVENTURE** | 150-175 KM* | 60 KM/H | 4.5 KW | Approx. 5-6 Hrs | Rugged utility EV with heavy-duty rear cargo rack & front bull-bars |
+| **TERRON+** | 225-270 KM | 70-80 KM/H | 6.5 KW \| 8 KW | **~3 Hours (0-80%)*** | Flagship grand tourer with stepped touring saddle & 3-hr rapid charge |
+
+---
+
+## 🌟 Key Features & Engineering
+
+1. **Official Branding & Splash Screen:**
+   - Features the official chrome metallic **TERRON** logo on deep navy sapphire background.
+   - Cinematic initial launch splash screen with ambient pulse and Smart BMS system check.
+
+2. **Brochure-Aligned Architecture:**
+   - **Cover & Philosophy (Page 1 & 7):** *"Powering Mobility. Energizing Progress. Driving the Future."*
+   - **Founder's Vision (Page 2):** Leadership message by **Sridevi Kadiyala**, Founder & Managing Director, Sridewi Energies Private Limited.
+   - **Interactive Color Swatches (Pages 3-7):** Dynamically preview colorways for each model.
+   - **Everyday Convenience (Page 8):** Riding modes (ECO/CITY/SPORT), Cruise control, Reverse assist, Smart BMS, Digital cluster, LED lighting, USB charging, Side-stand cut-off.
+   - **Premium Technology (Page 8):** Dual-channel ABS, Traction control, Hill hold, TPMS, Blind-spot alerts, Rear camera, ADAS warnings, and TFT display.
+   - **Ordering Guide (Page 8):** *"Choose with clarity. Ride with confidence."* guidance and riding factor disclosures.
+   - **Headquarters & Dealers (Page 9):** Madhapur, Hyderabad (+91 7416071115, sales@terronbatteries.com, sepl2578@gmail.com).
+
+3. **Mobile-First Handling (No Heavy Hybrid Bridges):**
+   - Pure Web Mobile APIs: Haptic feedback via `navigator.vibrate`, Web Share API, network listener.
+   - Sticky bottom navigation bar optimized for smartphone one-thumb usage.
+   - Interactive Test Ride booking modal with instant confirmation.
 
 ---
 
@@ -11,178 +43,74 @@ A cross-platform battery management, telemetry, and enterprise warranty platform
 
 ```
 terronbatteries/
-├── backend/
+├── backend/                  # Node.js + Express REST API
 │   ├── src/
-│   │   ├── server.js              # Express app entrypoint & middleware
-│   │   ├── routes/
-│   │   │   ├── system.js          # Health check & system status
-│   │   │   ├── batteries.js       # Battery products & datasheets API
-│   │   │   ├── telemetry.js       # Live BMS telemetry & simulation API
-│   │   │   └── warranty.js        # Warranty registration & verification
-│   │   ├── data/
-│   │   │   └── batteryStore.js    # In-memory battery models & live BMS state
-│   │   └── middleware/
-│   │       └── errorHandler.js    # Central error handler
-│   ├── test/
-│   │   └── server.test.js         # API integration test suite
-│   ├── .env.example
+│   │   ├── server.js         # Express server, CORS & error handling
+│   │   ├── routes/           # Batteries/EV Models, Telemetry (BMS), Warranty, System
+│   │   ├── data/             # EV models data & live BMS state
+│   │   └── middleware/       # Central error handler
+│   ├── test/                 # Server integration test suite
+│   ├── .env & .env.example
 │   └── package.json
 │
-├── frontend/
-│   ├── capacitor.config.json      # Capacitor configuration (appId, appName, webDir)
-│   ├── tailwind.config.js         # Tailwind CSS styling & brand palette
-│   ├── vite.config.js             # Vite build configuration
+├── frontend/                 # React (Vite) + Tailwind CSS Mobile-First App
+│   ├── public/
+│   │   ├── logo.png          # Official metallic chrome logo
+│   │   └── splash.png        # Official splash screen asset
 │   ├── src/
-│   │   ├── App.jsx                # Main application component
-│   │   ├── main.jsx               # React DOM bootstrap
-│   │   ├── index.css              # Tailwind directives & safe-area styles
+│   │   ├── App.jsx           # Master layout with splash screen & banner
 │   │   ├── components/
-│   │   │   ├── Navbar.jsx         # Navigation bar & live backend ping badge
-│   │   │   ├── TelemetryMonitor.jsx # Real-time BMS pack & 16-cell balance monitor
-│   │   │   ├── ProductsCatalog.jsx  # Battery models catalog & technical datasheets
-│   │   │   ├── WarrantyLookup.jsx   # Warranty lookup & serial number registration
-│   │   │   └── NativeDevicePanel.jsx# Capacitor mobile hardware status & actions
+│   │   │   ├── SplashScreen.jsx      # Cinematic launch screen
+│   │   │   ├── Banner.jsx            # "Coming Soon" notification banner
+│   │   │   ├── Navbar.jsx            # Brand header & desktop actions
+│   │   │   ├── Hero.jsx              # Hero showcase & key performance cards
+│   │   │   ├── ScooterShowcase.jsx   # 5-model brochure catalog & color swatches
+│   │   │   ├── TechnologySection.jsx # Everyday & Premium technology breakdown
+│   │   │   ├── FoundersMessage.jsx   # Sridevi Kadiyala executive vision
+│   │   │   ├── OrderingGuide.jsx     # "Choose with clarity" checklist
+│   │   │   ├── ContactFooter.jsx     # "Thank You" corporate office & inquiries
+│   │   │   ├── MobileNav.jsx         # Mobile floating bottom dock
+│   │   │   └── TestRideModal.jsx     # Test ride booking drawer
 │   │   └── services/
-│   │       ├── api.js             # API client with automatic offline fallback
-│   │       └── capacitorService.js# Capacitor native plugin bridge with web fallbacks
-│   ├── android/                   # Native Android Studio Gradle project
-│   ├── ios/                       # Native Xcode project
-│   └── package.json
+│   │       ├── api.js                # API client with offline fallback
+│   │       └── mobileService.js      # Standard mobile Web APIs (vibrate, share)
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   └── vercel.json           # Vercel SPA deployment config
 │
-├── package.json                   # Root workspace management
+├── vercel.json               # Root Vercel deployment config
+├── package.json              # Monorepo root scripts
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Running Locally
 
-### 1. Prerequisites
-- **Node.js** (v18+ or v20 LTS recommended)
-- **npm** (v10+ recommended)
-- **For Android Development:** Android Studio + Android SDK (API Level 24+)
-- **For iOS Development:** macOS with Xcode 15+ & CocoaPods
-
----
-
-### 2. Running the Backend Server (Express)
-
-```bash
+### 1. Start the Backend API
+```powershell
 cd backend
-npm install
 npm run dev
 ```
+*API runs on `http://localhost:5000`.*
 
-The Express API will start on **`http://localhost:5000`**.
-
-#### Key API Endpoints:
-- `GET  /api/system/health` — System uptime and status
-- `GET  /api/batteries` — Battery product catalog and specifications
-- `GET  /api/batteries/:id` — Single battery datasheet
-- `GET  /api/telemetry/live` — Real-time BMS telemetry (Voltage, Current, Temp, 16 Cell voltages)
-- `POST /api/telemetry/simulate` — Simulate load changes / charging states
-- `GET  /api/warranty/lookup/:serialNumber` — Check warranty status (try demo: `TRN-2026-99014`)
-- `POST /api/warranty/register` — Register a newly installed battery warranty
-
-To run the backend integration test suite:
-```bash
-cd backend
-npm test
-```
-
----
-
-### 3. Running the Frontend (React + Tailwind CSS)
-
-```bash
+### 2. Start the Frontend App
+```powershell
 cd frontend
-npm install
 npm run dev
 ```
-
-Open **`http://localhost:5173`** in your browser.
-
-- The application automatically connects to `http://localhost:5000/api`.
-- If the backend is not yet started, the frontend gracefully falls back to simulated offline telemetry, ensuring zero interruption.
+*Frontend runs on `http://localhost:5173`.*
 
 ---
 
-### 4. ☁️ Deploying to Vercel
+## ☁️ Deploying to Vercel
 
-The project includes pre-configured [`vercel.json`](file:///c:/Users/Sreew/terronbatteries/vercel.json) files both at the root workspace and in the `frontend/` directory.
+The project is pre-configured with root and frontend [`vercel.json`](file:///c:/Users/Sreew/terronbatteries/vercel.json) files:
 
-#### Option A: Deploy via Vercel CLI
-```bash
-npm i -g vercel
-vercel
-```
-
-#### Option B: Deploy via Vercel Web Dashboard (GitHub / GitLab / Bitbucket)
 1. Push your repository to GitHub.
 2. In the Vercel Dashboard, click **Add New Project** and import `terronbatteries`.
-3. If deploying from the repository root:
-   - **Framework Preset:** Vite
-   - **Build Command:** `cd frontend && npm install && npm run build`
-   - **Output Directory:** `frontend/dist`
-4. If setting the Root Directory to `frontend` in Vercel project settings:
-   - **Framework Preset:** Vite
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-5. (Optional) In **Environment Variables**, set:
-   - `VITE_API_BASE_URL`: URL of your deployed Express backend (e.g. on Railway, Render, or a VPS). If left blank, the frontend seamlessly operates in client-side demonstration mode with realistic battery telemetry.
+3. Framework Preset: `Vite`
+4. Build Command: `cd frontend && npm install && npm run build` (or `npm run build` if Root Directory is `frontend`)
+5. Output Directory: `frontend/dist` (or `dist` if Root Directory is `frontend`)
 6. Click **Deploy**!
-
----
-
-### 5. 📱 Mobile Development with Capacitor (Android & iOS)
-
-Capacitor bridges the React web application into 100% native Android and iOS apps.
-
-#### Syncing Web Assets with Native Platforms:
-Whenever you update frontend code or install new Capacitor plugins:
-```bash
-cd frontend
-npm run build
-npx cap sync
-```
-
-#### Android:
-To open the native Android project in **Android Studio**:
-```bash
-cd frontend
-npx cap open android
-```
-- In Android Studio, connect your physical Android phone (with USB Debugging enabled) or start an Android Virtual Device (AVD).
-- Click **Run** (`Shift + F10`) to compile and launch the app.
-
-#### iOS (macOS required):
-To open the native Xcode workspace in **Xcode**:
-```bash
-cd frontend
-npx cap open ios
-```
-- In Xcode, select your target simulator or provisioned iPhone.
-- Click **Run** (`Cmd + R`) to build and run the app.
-
----
-
-## ⚡ Capacitor Native Features Included
-
-1. **`@capacitor/device`:** Reads physical device model, operating system, and hardware battery level.
-2. **`@capacitor/network`:** Real-time cellular / WiFi connectivity detection.
-3. **`@capacitor/haptics`:** Tactile vibration feedback on button presses and alarms.
-4. **`@capacitor/status-bar`:** Configures dark theme styling matching battery status.
-5. **`@capacitor/preferences`:** Persistent local mobile key-value storage.
-
----
-
-## 🛠️ Root Workspace Scripts
-
-From the root `terronbatteries` folder:
-- `npm run backend` — Start the Node.js Express server
-- `npm run frontend` — Start the Vite React development server
-- `npm run build:frontend` — Build production bundle for web and mobile
-- `npm run cap:sync` — Sync production bundle to Android and iOS folders
-- `npm run cap:android` — Launch Android Studio
-- `npm run cap:ios` — Launch Xcode (macOS)
-

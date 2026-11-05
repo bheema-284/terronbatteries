@@ -1,28 +1,23 @@
 {
   "name": "terron-batteries-workspace",
   "version": "1.0.0",
-  "description": "Terron Batteries Platform - Node.js Express Backend, React Tailwind Frontend, and Capacitor for Android & iOS",
+  "description": "Terron EV Mobility & Batteries Platform - Node.js Express Backend, React Tailwind Frontend with Mobile Handling",
   "scripts": {
     "install:all": "npm install --prefix backend && npm install --prefix frontend",
     "backend": "npm run dev --prefix backend",
     "frontend": "npm run dev --prefix frontend",
-    "build:frontend": "npm run build --prefix frontend",
-    "cap:sync": "npm run cap:sync --prefix frontend",
-    "cap:android": "npm run cap:android --prefix frontend",
-    "cap:ios": "npm run cap:ios --prefix frontend"
+    "build:frontend": "npm run build --prefix frontend"
   },
   "keywords": [
     "terron",
+    "ev-mobility",
+    "electric-scooters",
     "batteries",
     "react",
     "tailwind",
     "nodejs",
-    "express",
-    "capacitor",
-    "android",
-    "ios"
+    "express"
   ],
-  "author": "Terron Batteries Team",
+  "author": "Sridewi Energies Private Limited",
   "license": "ISC"
 }
-

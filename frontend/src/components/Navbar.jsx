@@ -1,106 +1,165 @@
-import React from 'react';
-import { Zap, Activity, Cpu, ShieldCheck, Smartphone, Wifi, WifiOff } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, Phone, Zap, ArrowRight, ShieldCheck } from 'lucide-react';
+import { triggerHaptic } from '../services/mobileService';
 
-export default function Navbar({ activeTab, setActiveTab, backendStatus, onTriggerHaptic }) {
-  const navItems = [
-    { id: 'telemetry', label: 'BMS Telemetry', icon: Activity },
-    { id: 'products', label: 'Batteries Catalog', icon: Cpu },
-    { id: 'warranty', label: 'Warranty & Care', icon: ShieldCheck },
-    { id: 'native', label: 'Mobile & Capacitor', icon: Smartphone }
-  ];
+export default function Navbar({ onOpenTestRide }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleTabClick = (id) => {
-    if (onTriggerHaptic) onTriggerHaptic();
-    setActiveTab(id);
+  const scrollTo = (id) => {
+    triggerHaptic(20);
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+    <header className="sticky top-0 z-40 bg-[#081326]/95 backdrop-blur-md border-b border-slate-800/80 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Brand Logo & Name */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => handleTabClick('telemetry')}>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-terron-600 to-terron-400 flex items-center justify-center shadow-lg shadow-terron-500/20">
-              <Zap className="w-6 h-6 text-slate-950 stroke-[2.5]" />
-            </div>
-            <div>
-              <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-terron-300 bg-clip-text text-transparent">
-                TERRON
+        <div className="flex items-center justify-between h-20">
+          {/* Brand Logo with Official Uploaded Image */}
+          <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => scrollTo('hero')}>
+            <img
+              src="/logo.png"
+              alt="TERRON EV Mobility"
+              className="h-10 sm:h-12 w-auto object-contain rounded-md drop-shadow-[0_2px_8px_rgba(56,189,248,0.2)] group-hover:scale-105 transition-transform"
+            />
+            <div className="flex flex-col">
+              <span className="text-[10px] sm:text-xs tracking-[0.35em] text-sky-400 font-bold uppercase">
+                EV MOBILITY
               </span>
-              <span className="text-xs ml-1 font-semibold tracking-widest text-terron-400 block -mt-1 uppercase">
-                Batteries & BMS
+              <span className="text-[8px] sm:text-[9px] text-slate-400 uppercase tracking-wider">
+                Sridewi Energies
               </span>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-1">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleTabClick(item.id)}
-                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
-                    isActive
-                      ? 'bg-terron-500/15 text-terron-400 border border-terron-500/30 shadow-sm'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span>{item.label}</span>
-                </button>
-              );
-            })}
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+            <button
+              onClick={() => scrollTo('models')}
+              className="hover:text-sky-400 transition-colors"
+            >
+              EV Models
+            </button>
+            <button
+              onClick={() => scrollTo('technology')}
+              className="hover:text-sky-400 transition-colors"
+            >
+              Smart Technology
+            </button>
+            <button
+              onClick={() => scrollTo('founder')}
+              className="hover:text-sky-400 transition-colors"
+            >
+              Founder's Vision
+            </button>
+            <button
+              onClick={() => scrollTo('ordering')}
+              className="hover:text-sky-400 transition-colors"
+            >
+              Ordering Guide
+            </button>
+            <button
+              onClick={() => scrollTo('contact')}
+              className="hover:text-sky-400 transition-colors"
+            >
+              Contact
+            </button>
           </nav>
 
-          {/* Status Badge */}
-          <div className="flex items-center space-x-2">
-            <div
-              className={`flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-medium border ${
-                backendStatus.online
-                  ? 'bg-emerald-950/60 text-emerald-400 border-emerald-500/30'
-                  : 'bg-amber-950/50 text-amber-300 border-amber-500/30'
-              }`}
-              title={backendStatus.online ? 'Backend Connected' : 'Running in Offline / Mock Mode'}
+          {/* Desktop Call & Test Ride CTA */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <a
+              href="tel:+917416071115"
+              className="flex items-center space-x-1.5 text-xs text-slate-300 hover:text-white bg-slate-900/80 border border-slate-800 px-3 py-2 rounded-xl transition-all"
             >
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  backendStatus.online ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
-                }`}
-              />
-              <span className="hidden sm:inline">
-                {backendStatus.online ? 'Backend: Connected (Port 5000)' : 'Backend: Standalone Mode'}
-              </span>
-              <span className="sm:hidden">
-                {backendStatus.online ? 'API Live' : 'Local'}
-              </span>
-            </div>
+              <Phone className="w-3.5 h-3.5 text-sky-400" />
+              <span>+91 7416071115</span>
+            </a>
+
+            <button
+              onClick={() => {
+                triggerHaptic(30);
+                onOpenTestRide();
+              }}
+              className="flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-sky-400 to-blue-600 hover:from-sky-300 hover:to-blue-500 text-slate-950 transition-all shadow-md shadow-sky-500/20"
+            >
+              <span>Book Test Ride</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center space-x-2">
+            <button
+              onClick={() => {
+                triggerHaptic(20);
+                onOpenTestRide();
+              }}
+              className="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-400 text-slate-950 shadow-sm"
+            >
+              Book Ride
+            </button>
+            <button
+              onClick={() => {
+                triggerHaptic(20);
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
+              aria-label="Toggle Navigation Menu"
+              className="p-2 text-slate-300 hover:text-white rounded-lg bg-slate-900 border border-slate-800"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation bar */}
-        <div className="md:hidden flex justify-around py-2 border-t border-slate-800/60">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleTabClick(item.id)}
-                className={`flex flex-col items-center py-1 px-2 text-xs font-medium rounded-lg transition-colors ${
-                  isActive ? 'text-terron-400 font-semibold' : 'text-slate-400'
-                }`}
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-slate-800 space-y-2 text-sm font-medium animate-fadeIn">
+            <button
+              onClick={() => scrollTo('models')}
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+            >
+              EV Models Lineup (Classic Sport, Sport, Nexa, Adventure, Terron+)
+            </button>
+            <button
+              onClick={() => scrollTo('technology')}
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+            >
+              Smart Technology & BMS
+            </button>
+            <button
+              onClick={() => scrollTo('founder')}
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+            >
+              Founder's Message (Sridevi Kadiyala)
+            </button>
+            <button
+              onClick={() => scrollTo('ordering')}
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+            >
+              Configuration & Ordering Guide
+            </button>
+            <button
+              onClick={() => scrollTo('contact')}
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+            >
+              Dealership & Contact Info
+            </button>
+            <div className="pt-2 border-t border-slate-800/80">
+              <a
+                href="tel:+917416071115"
+                className="flex items-center space-x-2 text-sky-400 font-semibold px-3 py-2"
               >
-                <Icon className={`w-5 h-5 mb-0.5 ${isActive ? 'text-terron-400' : 'text-slate-400'}`} />
-                <span>{item.label.split(' ')[0]}</span>
-              </button>
-            );
-          })}
-        </div>
+                <Phone className="w-4 h-4" />
+                <span>Call Hyderabad Desk: +91 7416071115</span>
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
 }
-

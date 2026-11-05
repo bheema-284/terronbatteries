@@ -1,109 +1,170 @@
-// Terron Batteries in-memory data store with realistic battery models and telemetry
+// Terron EV Mobility & Batteries in-memory data store
+// SRIDEWI ENERGIES PRIVATE LIMITED
 
-const initialBatteries = [
+const evModels = [
   {
-    id: "TB-LFP-48V",
-    name: "Terron Ultra LFP 48V 100Ah",
-    category: "Solar Storage",
-    chemistry: "LiFePO4 (Lithium Iron Phosphate)",
-    nominalVoltage: "51.2 V",
-    capacity: "100 Ah (5.12 kWh)",
-    cycleLife: "6000+ Cycles @ 80% DoD",
-    warrantyYears: 10,
-    price: 1299,
-    inStock: true,
-    rating: 4.9,
-    description: "Premium wall-mounted home energy storage battery with integrated Smart BMS and CAN/RS485 communication.",
-    specs: {
-      maxChargeCurrent: "50 A",
-      maxDischargeCurrent: "100 A",
-      operatingTemp: "-10°C to 55°C",
-      weight: "44 kg",
-      dimensions: "650 x 440 x 180 mm",
-      efficiency: "98.5%"
-    }
+    id: "TRN-CLASSIC-SPORT",
+    name: "Classic Sport",
+    badge: "Premium Electric Scooter",
+    tagline: "Timeless elegance meets modern electric performance",
+    range: "150-175 KM*",
+    topSpeed: "60 KM/H",
+    motor: "4.5 KW",
+    chargingTime: "Approx. 5 - 6 Hours",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "12\" Tubeless Alloy Wheels",
+    category: "City Commuter",
+    colors: [
+      { name: "Crimson Red", hex: "#dc2626" },
+      { name: "Solar Yellow", hex: "#eab308" },
+      { name: "Cobalt Blue", hex: "#2563eb" },
+      { name: "Obsidian Black", hex: "#18181b" },
+      { name: "Pearl White", hex: "#f8fafc" }
+    ],
+    features: [
+      "Cruise Control",
+      "Reverse Assist",
+      "Smart BMS with Thermal Guard",
+      "Digital Battery & Range Display",
+      "Full LED Lighting",
+      "Anti-Theft Alarm",
+      "USB Quick Charge",
+      "Side-Stand Engine Cut-Off",
+      "Optional GPS & Geo-Fencing"
+    ]
   },
   {
-    id: "TB-EV-72V",
-    name: "Terron VoltMax EV 72V 60Ah",
-    category: "Electric Vehicles (2W/3W)",
-    chemistry: "NMC (Nickel Manganese Cobalt)",
-    nominalVoltage: "72.0 V",
-    capacity: "60 Ah (4.32 kWh)",
-    cycleLife: "2500+ Cycles @ 90% DoD",
-    warrantyYears: 5,
-    price: 899,
-    inStock: true,
-    rating: 4.8,
-    description: "High energy-density powerpack engineered for electric scooters, motorbikes, and commercial 3-wheelers.",
-    specs: {
-      maxChargeCurrent: "30 A",
-      maxDischargeCurrent: "90 A",
-      operatingTemp: "-20°C to 60°C",
-      weight: "22 kg",
-      dimensions: "380 x 220 x 170 mm",
-      efficiency: "97.2%"
-    }
+    id: "TRN-SPORT",
+    name: "Sport",
+    badge: "High-Performance Electric Scooter",
+    tagline: "Aggressive styling and razor-sharp city agility",
+    range: "150-175 KM*",
+    topSpeed: "60 KM/H",
+    motor: "4.5 KW",
+    chargingTime: "Approx. 5 - 6 Hours",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "Up to 150KG | Tubeless Alloy (12-inch)",
+    category: "Sport Performance",
+    colors: [
+      { name: "Blaze Red", hex: "#ef4444" },
+      { name: "Cyber Orange", hex: "#f97316" },
+      { name: "Stealth Black", hex: "#0f172a" },
+      { name: "Ice White", hex: "#f1f5f9" }
+    ],
+    features: [
+      "Sport-Tuned Acceleration",
+      "Exposed Sport Handlebars",
+      "Reverse Assist Mode",
+      "Smart BMS Protection",
+      "Twin LED Headlamps",
+      "Anti-Theft Acoustic Alert",
+      "USB Charging Port",
+      "Side-Stand Safety Cut-Off",
+      "Mobile App Connectivity"
+    ]
   },
   {
-    id: "TB-INV-12V",
-    name: "Terron Prime HeavyDuty Inverter 12V 200Ah",
-    category: "Inverter & UPS",
-    chemistry: "Tubular Deep Cycle Gel",
-    nominalVoltage: "12.0 V",
-    capacity: "200 Ah (2.4 kWh)",
-    cycleLife: "1800+ Cycles",
-    warrantyYears: 3,
-    price: 349,
-    inStock: true,
-    rating: 4.7,
-    description: "Heavy-duty low maintenance tubular inverter battery built to endure extreme power outages and high ambient temperatures.",
-    specs: {
-      maxChargeCurrent: "20 A",
-      maxDischargeCurrent: "50 A",
-      operatingTemp: "0°C to 50°C",
-      weight: "58 kg",
-      dimensions: "505 x 190 x 410 mm",
-      efficiency: "92.0%"
-    }
+    id: "TRN-NEXA",
+    name: "Nexa",
+    badge: "Flagship Adventure Maxi-Scooter",
+    tagline: "Dominate both asphalt highways and rugged trails",
+    range: "225-270 KM*",
+    topSpeed: "70-80 KM/H",
+    motor: "6.5 KW | 8 KW",
+    chargingTime: "Approx. 5 - 6 Hours",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "Up to 150KG | Tubeless Alloy (12-inch)",
+    category: "Maxi Adventure",
+    colors: [
+      { name: "Titanium Silver", hex: "#94a3b8" },
+      { name: "Gunmetal Grey", hex: "#475569" },
+      { name: "Matte Black", hex: "#1e293b" }
+    ],
+    features: [
+      "Tall Touring Aerodynamic Windshield",
+      "Twin Projector LED Headlamps",
+      "All-Terrain Knobby Tires",
+      "Dual-Channel Braking with CBS",
+      "Digital TFT Connected Cluster",
+      "Cruise Control & Hill Hold",
+      "Smart BMS with Remote Diagnostics",
+      "USB Quick Charging"
+    ]
   },
   {
-    id: "TB-IND-96V",
-    name: "Terron Industrial PowerCore 96V 250Ah",
-    category: "Industrial & Telecom",
-    chemistry: "Advanced LiFePO4",
-    nominalVoltage: "96.0 V",
-    capacity: "250 Ah (24.0 kWh)",
-    cycleLife: "8000+ Cycles",
-    warrantyYears: 10,
-    price: 5499,
-    inStock: true,
-    rating: 5.0,
-    description: "Modular high-voltage energy storage cabinet for telecom base stations, data centers, and microgrids.",
-    specs: {
-      maxChargeCurrent: "125 A",
-      maxDischargeCurrent: "200 A",
-      operatingTemp: "-25°C to 65°C",
-      weight: "210 kg",
-      dimensions: "1200 x 800 x 600 mm",
-      efficiency: "99.1%"
-    }
+    id: "TRN-ADVENTURE",
+    name: "Adventure",
+    badge: "Rugged All-Terrain Utility EV",
+    tagline: "Engineered for heavy endurance and off-road freedom",
+    range: "150-175 KM*",
+    topSpeed: "60 KM/H",
+    motor: "4.5 KW",
+    chargingTime: "Approx. 5 - 6 Hours",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "12\" Heavy Duty All-Terrain Alloy",
+    category: "Utility & Off-Road",
+    colors: [
+      { name: "Emerald Green", hex: "#047857" },
+      { name: "Silver Dune", hex: "#cbd5e1" },
+      { name: "Ranger Black", hex: "#09090b" }
+    ],
+    features: [
+      "Heavy-Duty Rear Luggage / Cargo Rack",
+      "Protective Front Apron Bull-Bars",
+      "High Ground Clearance Chassis",
+      "Reverse Assist Function",
+      "Digital Battery & Range Display",
+      "Waterproof IP67 Smart BMS",
+      "Anti-Theft Acoustic Sensor"
+    ]
+  },
+  {
+    id: "TRN-TERRON-PLUS",
+    name: "Terron+",
+    badge: "Ultra Long-Range Grand Tourer",
+    tagline: "Maximum range and 3-hour rapid charging capability",
+    range: "225-270 KM",
+    topSpeed: "70-80 KM/H",
+    motor: "6.5 KW | 8 KW",
+    chargingTime: "Approx. 3 Hours (0-80%)*",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "12\" Premium Aero Tubeless Alloy",
+    category: "Grand Tourer",
+    colors: [
+      { name: "Aero Cyan Blue", hex: "#0284c7" },
+      { name: "Volt Yellow", hex: "#eab308" },
+      { name: "Glacier White", hex: "#f8fafc" }
+    ],
+    features: [
+      "Fast Charging: 0-80% in Approx 3 Hours*",
+      "High-Output 8 KW Peak Electric Powertrain",
+      "Ergonomic Stepped Grand Touring Saddle",
+      "Adaptive LED Lighting Matrix",
+      "Cruise Control & Reverse Assist",
+      "Smart Connected BMS with Thermal Dissipation",
+      "Optional ADAS & Blind-Spot Alerts"
+    ]
   }
 ];
 
 // Active Telemetry state (simulating real-time BMS data)
 let activeTelemetry = {
   deviceId: "TRN-BMS-88914",
-  modelName: "Terron Ultra LFP 48V 100Ah",
+  modelName: "Terron+ Long Range EV",
   connected: true,
-  soc: 84.5, // State of Charge %
-  soh: 98.2, // State of Health %
-  voltage: 52.8, // Volts
-  current: -14.2, // Amperes (negative = discharging, positive = charging)
-  power: 749.76, // Watts
-  temperature: 28.4, // Celsius
-  cellVoltages: [3.30, 3.31, 3.30, 3.29, 3.30, 3.31, 3.30, 3.30, 3.30, 3.31, 3.29, 3.30, 3.30, 3.31, 3.30, 3.30],
-  cycleCount: 142,
+  soc: 88.0, // State of Charge %
+  soh: 99.1, // State of Health %
+  voltage: 74.2, // Volts
+  current: -18.5, // Amperes
+  power: 1372.7, // Watts
+  temperature: 29.2, // Celsius
+  cellVoltages: [3.31, 3.32, 3.31, 3.30, 3.31, 3.32, 3.31, 3.31, 3.31, 3.32, 3.30, 3.31, 3.31, 3.32, 3.31, 3.31],
+  cycleCount: 84,
   bmsStatus: "Optimal",
   protectionFlags: {
     overVoltage: false,
@@ -115,39 +176,28 @@ let activeTelemetry = {
   lastUpdated: new Date().toISOString()
 };
 
-// Registered warranties
+// Registered warranties & bookings
 const warranties = [
   {
     serialNumber: "TRN-2026-99014",
-    customerName: "Jane Doe",
-    customerEmail: "jane.doe@example.com",
-    batteryId: "TB-LFP-48V",
+    customerName: "Sridevi Kadiyala",
+    customerEmail: "sridevi@sridewienergies.com",
+    batteryId: "TRN-TERRON-PLUS",
     purchaseDate: "2026-01-15",
-    warrantyExpiry: "2036-01-15",
-    status: "Active"
-  },
-  {
-    serialNumber: "TRN-2025-41288",
-    customerName: "Alex Rivera",
-    customerEmail: "alex.r@example.com",
-    batteryId: "TB-EV-72V",
-    purchaseDate: "2025-06-10",
-    warrantyExpiry: "2030-06-10",
+    warrantyExpiry: "2031-01-15",
     status: "Active"
   }
 ];
 
+const bookings = [];
+
 module.exports = {
-  batteries: initialBatteries,
+  evModels,
   getTelemetry: () => {
-    // Add small realistic jitter to telemetry simulation
-    const jitterV = (Math.random() - 0.5) * 0.2;
+    const jitterV = (Math.random() - 0.5) * 0.3;
     const jitterA = (Math.random() - 0.5) * 0.6;
-    const jitterT = (Math.random() - 0.5) * 0.1;
-    
-    activeTelemetry.voltage = Number((52.8 + jitterV).toFixed(2));
-    activeTelemetry.current = Number((-14.2 + jitterA).toFixed(2));
-    activeTelemetry.temperature = Number((28.4 + jitterT).toFixed(1));
+    activeTelemetry.voltage = Number((74.2 + jitterV).toFixed(1));
+    activeTelemetry.current = Number((-18.5 + jitterA).toFixed(1));
     activeTelemetry.power = Number((activeTelemetry.voltage * Math.abs(activeTelemetry.current)).toFixed(1));
     activeTelemetry.lastUpdated = new Date().toISOString();
     return activeTelemetry;
@@ -156,6 +206,6 @@ module.exports = {
     activeTelemetry = { ...activeTelemetry, ...updates, lastUpdated: new Date().toISOString() };
     return activeTelemetry;
   },
-  warranties
+  warranties,
+  bookings
 };
-

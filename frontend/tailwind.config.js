@@ -7,27 +7,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        terron: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981', // Terron Energy Green
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-          950: '#022c22'
+        navy: {
+          800: '#112240',
+          850: '#0d1b33',
+          900: '#0a162b',
+          950: '#060e1c'
         },
-        volt: {
+        terron: {
+          50: '#f0fdf4',
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+          chrome: '#e2e8f0'
+        },
+        electric: {
           400: '#38bdf8',
           500: '#0ea5e9',
           600: '#0284c7'
         }
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Montserrat', 'system-ui', 'sans-serif']
       }
     },
   },
   plugins: [],
 }
-
