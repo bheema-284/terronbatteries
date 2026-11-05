@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Terron Batteries</string>
+    <string name="title_activity_main">Terron Batteries</string>
+    <string name="package_name">com.terronbatteries.app</string>
+    <string name="custom_url_scheme">com.terronbatteries.app</string>
+</resources>

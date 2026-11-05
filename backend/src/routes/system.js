@@ -1,0 +1,15 @@
+const express = require("express");
+const router = express.Router();
+
+router.get("/health", (req, res) => {
+  res.json({
+    status: "ok",
+    service: "Terron Batteries API",
+    version: "1.0.0",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+module.exports = router;
+
