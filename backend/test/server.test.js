@@ -45,7 +45,7 @@ async function runTests() {
 
     // 2. EV Models Test
     const batteries = await makeRequest("/api/batteries");
-    console.log("✓ EV Models List:", batteries.status === 200 && batteries.data.count === 5 ? `PASS (${batteries.data.count} models)` : "FAIL");
+    console.log("✓ EV Models List:", batteries.status === 200 && batteries.data.count === 4 ? `PASS (${batteries.data.count} models)` : "FAIL");
 
     // 3. Telemetry Test
     const telemetry = await makeRequest("/api/telemetry/live");

@@ -15,9 +15,9 @@ import TestRideModal from './components/TestRideModal';
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [testRideOpen, setTestRideOpen] = useState(false);
-  const [selectedModelForRide, setSelectedModelForRide] = useState('Classic Sport');
+  const [selectedModelForRide, setSelectedModelForRide] = useState('CLASSIC SPORTS');
 
-  const handleOpenTestRide = (modelName = 'Classic Sport') => {
+  const handleOpenTestRide = (modelName = 'CLASSIC SPORTS') => {
     setSelectedModelForRide(modelName);
     setTestRideOpen(true);
   };
@@ -27,7 +27,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#111E31] text-slate-100 flex flex-col font-sans selection:bg-sky-500 selection:text-slate-950">
+    <div className="min-h-screen bg-[#111E31] text-slate-100 flex flex-col font-sans selection:bg-[#EAB308] selection:text-slate-950">
       {/* 0. Cinematic Splash Screen */}
       {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
 
@@ -35,34 +35,34 @@ export default function App() {
       <Banner />
 
       {/* 2. Top Header Navigation */}
-      <Navbar onOpenTestRide={() => handleOpenTestRide('Classic Sport')} />
+      <Navbar onOpenTestRide={() => handleOpenTestRide('CLASSIC SPORTS')} />
 
       {/* Main Brochure Sections */}
       <main className="flex-1">
-        {/* 3. Hero Section (Page 1 & 7 Vision) */}
-        <Hero onOpenTestRide={() => handleOpenTestRide('Classic Sport')} />
+        {/* 3. Hero Section - Auto-sliding 4 Bikes Showcase */}
+        <Hero onOpenTestRide={() => handleOpenTestRide('CLASSIC SPORTS')} />
 
-        {/* 4. Complete 5 EV Models Showcase (Pages 3, 4, 5, 6, 7) */}
+        {/* 4. Complete 4 EV Models Showcase (CLASSIC SPORTS, NEXA, SPORTS, TERRON+) */}
         <ScooterShowcase onOpenTestRide={handleOpenTestRide} />
 
         {/* 5. Everyday Convenience & Premium Technology (Page 8) */}
         <TechnologySection />
 
-        {/* 6. Royal Enfield-Style Comparison & Financing Calculator */}
+        {/* 6. Comparison & Financing Calculator */}
         <CompareSection onOpenTestRide={handleOpenTestRide} />
 
         {/* 7. Founder's Message - Sridevi Kadiyala (Page 2) */}
         <FoundersMessage />
 
         {/* 8. Configuration & Ordering Guide (Page 8) */}
-        <OrderingGuide onOpenTestRide={() => handleOpenTestRide('Terron+')} />
+        <OrderingGuide onOpenTestRide={() => handleOpenTestRide('TERRON+')} />
       </main>
 
-      {/* 8. Corporate Information & Thank You Footer (Page 9) */}
+      {/* 9. Corporate Information & Thank You Footer (Page 9) */}
       <ContactFooter />
 
-      {/* 9. Floating Mobile Navigation Bar (Mobile Viewport Handling) */}
-      <MobileNav onOpenTestRide={() => handleOpenTestRide('Classic Sport')} />
+      {/* 10. Floating Mobile Navigation Bar (Mobile Viewport Handling) */}
+      <MobileNav onOpenTestRide={() => handleOpenTestRide('CLASSIC SPORTS')} />
 
       {/* 10. Interactive Test Ride Booking Drawer / Modal */}
       <TestRideModal

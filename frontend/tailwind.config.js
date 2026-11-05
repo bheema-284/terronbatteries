@@ -14,15 +14,18 @@ export default {
     extend: {
       colors: {
         brand: {
-          bg: '#111E31',       // EXACT LOGO BACKGROUND COLOR CODE
-          surface: '#0b1523',  // Slightly darker accent
-          card: '#16273f',     // Harmonized card surface
-          elevated: '#1c314f', // Elevated hover / active state
-          border: '#233d62',   // Sleek border matching logo
-          borderLight: '#32568a',
-          accent: '#38bdf8',   // Electric cyan highlight
-          blue: '#2563eb',
-          chrome: '#e2e8f0',
+          bg: '#111E31',          // EXACT LOGO NAVY BACKGROUND
+          card: '#15243C',         // Card background
+          surface: '#0E1A2C',      // Elevated surface
+          border: '#1E3352',       // Border line
+          gold: '#EAB308',         // BROCHURE GOLD
+          goldLight: '#FBBF24',
+          goldDark: '#CA8A04',
+          silver: '#CBD5E1',       // METALLIC SILVER
+          silverLight: '#F1F5F9',
+          silverDark: '#94A3B8',
+          blue: '#38BDF8',         // ELECTRIC BLUE GLOW
+          blueDark: '#2563EB',
         }
       },
       fontFamily: {

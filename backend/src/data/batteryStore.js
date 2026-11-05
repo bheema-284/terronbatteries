@@ -1,10 +1,11 @@
 // Terron EV Mobility & Batteries in-memory data store
 // SRIDEWI ENERGIES PRIVATE LIMITED
+// The 4 Official EV Bikes: CLASSIC SPORTS, NEXA, SPORTS, TERRON+
 
 const evModels = [
   {
-    id: "TRN-CLASSIC-SPORT",
-    name: "Classic Sport",
+    id: "TRN-CLASSIC-SPORTS",
+    name: "CLASSIC SPORTS",
     badge: "Premium Electric Scooter",
     tagline: "Timeless elegance meets modern electric performance",
     range: "150-175 KM*",
@@ -15,12 +16,12 @@ const evModels = [
     braking: "Front & Rear Disc with CBS",
     wheels: "12\" Tubeless Alloy Wheels",
     category: "City Commuter",
+    startingPrice: "₹89,999",
     colors: [
-      { name: "Crimson Red", hex: "#dc2626" },
-      { name: "Solar Yellow", hex: "#eab308" },
-      { name: "Cobalt Blue", hex: "#2563eb" },
+      { name: "Crimson Red (Classic)", hex: "#dc2626" },
       { name: "Obsidian Black", hex: "#18181b" },
-      { name: "Pearl White", hex: "#f8fafc" }
+      { name: "Emerald Green", hex: "#047857" },
+      { name: "Titanium Silver", hex: "#94a3b8" }
     ],
     features: [
       "Cruise Control",
@@ -35,8 +36,39 @@ const evModels = [
     ]
   },
   {
-    id: "TRN-SPORT",
-    name: "Sport",
+    id: "TRN-NEXA",
+    name: "NEXA",
+    badge: "Flagship Adventure Maxi-Scooter",
+    tagline: "Dominate both asphalt highways and rugged trails",
+    range: "225-270 KM*",
+    topSpeed: "70-80 KM/H",
+    motor: "6.5 KW | 8 KW",
+    chargingTime: "Approx. 5 - 6 Hours",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "Up to 150KG | Tubeless Alloy (12-inch)",
+    category: "Maxi Adventure",
+    startingPrice: "₹1,19,999",
+    colors: [
+      { name: "Titanium Silver (Nexa)", hex: "#94a3b8" },
+      { name: "Obsidian Black", hex: "#18181b" },
+      { name: "Crimson Red", hex: "#dc2626" },
+      { name: "Emerald Green", hex: "#047857" }
+    ],
+    features: [
+      "Tall Touring Aerodynamic Windshield",
+      "Twin Projector LED Headlamps",
+      "All-Terrain Knobby Tires",
+      "Dual-Channel Braking with CBS",
+      "Digital TFT Connected Cluster",
+      "Cruise Control & Hill Hold",
+      "Smart BMS with Remote Diagnostics",
+      "USB Quick Charging"
+    ]
+  },
+  {
+    id: "TRN-SPORTS",
+    name: "SPORTS",
     badge: "High-Performance Electric Scooter",
     tagline: "Aggressive styling and razor-sharp city agility",
     range: "150-175 KM*",
@@ -47,11 +79,12 @@ const evModels = [
     braking: "Front & Rear Disc with CBS",
     wheels: "Up to 150KG | Tubeless Alloy (12-inch)",
     category: "Sport Performance",
+    startingPrice: "₹91,999",
     colors: [
-      { name: "Blaze Red", hex: "#ef4444" },
-      { name: "Cyber Orange", hex: "#f97316" },
-      { name: "Stealth Black", hex: "#0f172a" },
-      { name: "Ice White", hex: "#f1f5f9" }
+      { name: "Obsidian Black (Sports)", hex: "#18181b" },
+      { name: "Crimson Red", hex: "#dc2626" },
+      { name: "Emerald Green", hex: "#047857" },
+      { name: "Titanium Silver", hex: "#94a3b8" }
     ],
     features: [
       "Sport-Tuned Acceleration",
@@ -66,65 +99,8 @@ const evModels = [
     ]
   },
   {
-    id: "TRN-NEXA",
-    name: "Nexa",
-    badge: "Flagship Adventure Maxi-Scooter",
-    tagline: "Dominate both asphalt highways and rugged trails",
-    range: "225-270 KM*",
-    topSpeed: "70-80 KM/H",
-    motor: "6.5 KW | 8 KW",
-    chargingTime: "Approx. 5 - 6 Hours",
-    rideModes: "ECO | CITY | SPORT",
-    braking: "Front & Rear Disc with CBS",
-    wheels: "Up to 150KG | Tubeless Alloy (12-inch)",
-    category: "Maxi Adventure",
-    colors: [
-      { name: "Titanium Silver", hex: "#94a3b8" },
-      { name: "Gunmetal Grey", hex: "#475569" },
-      { name: "Matte Black", hex: "#1e293b" }
-    ],
-    features: [
-      "Tall Touring Aerodynamic Windshield",
-      "Twin Projector LED Headlamps",
-      "All-Terrain Knobby Tires",
-      "Dual-Channel Braking with CBS",
-      "Digital TFT Connected Cluster",
-      "Cruise Control & Hill Hold",
-      "Smart BMS with Remote Diagnostics",
-      "USB Quick Charging"
-    ]
-  },
-  {
-    id: "TRN-ADVENTURE",
-    name: "Adventure",
-    badge: "Rugged All-Terrain Utility EV",
-    tagline: "Engineered for heavy endurance and off-road freedom",
-    range: "150-175 KM*",
-    topSpeed: "60 KM/H",
-    motor: "4.5 KW",
-    chargingTime: "Approx. 5 - 6 Hours",
-    rideModes: "ECO | CITY | SPORT",
-    braking: "Front & Rear Disc with CBS",
-    wheels: "12\" Heavy Duty All-Terrain Alloy",
-    category: "Utility & Off-Road",
-    colors: [
-      { name: "Emerald Green", hex: "#047857" },
-      { name: "Silver Dune", hex: "#cbd5e1" },
-      { name: "Ranger Black", hex: "#09090b" }
-    ],
-    features: [
-      "Heavy-Duty Rear Luggage / Cargo Rack",
-      "Protective Front Apron Bull-Bars",
-      "High Ground Clearance Chassis",
-      "Reverse Assist Function",
-      "Digital Battery & Range Display",
-      "Waterproof IP67 Smart BMS",
-      "Anti-Theft Acoustic Sensor"
-    ]
-  },
-  {
     id: "TRN-TERRON-PLUS",
-    name: "Terron+",
+    name: "TERRON+",
     badge: "Ultra Long-Range Grand Tourer",
     tagline: "Maximum range and 3-hour rapid charging capability",
     range: "225-270 KM",
@@ -135,10 +111,12 @@ const evModels = [
     braking: "Front & Rear Disc with CBS",
     wheels: "12\" Premium Aero Tubeless Alloy",
     category: "Grand Tourer",
+    startingPrice: "₹1,29,999",
     colors: [
-      { name: "Aero Cyan Blue", hex: "#0284c7" },
-      { name: "Volt Yellow", hex: "#eab308" },
-      { name: "Glacier White", hex: "#f8fafc" }
+      { name: "Emerald Green (Adventure)", hex: "#047857" },
+      { name: "Titanium Silver", hex: "#94a3b8" },
+      { name: "Crimson Red", hex: "#dc2626" },
+      { name: "Obsidian Black", hex: "#18181b" }
     ],
     features: [
       "Fast Charging: 0-80% in Approx 3 Hours*",

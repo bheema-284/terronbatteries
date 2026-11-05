@@ -78,19 +78,19 @@ export default function Navbar({ onOpenTestRide }) {
           {/* Desktop Call & Test Ride CTA */}
           <div className="hidden lg:flex items-center space-x-4">
             <a
-              href="tel:+917416071115"
-              className="flex items-center space-x-1.5 text-xs text-slate-300 hover:text-white bg-slate-900/80 border border-slate-800 px-3 py-2 rounded-xl transition-all"
+              href="tel:+919121646777"
+              className="flex items-center space-x-1.5 text-xs text-[#CBD5E1] hover:text-[#EAB308] bg-[#15243C] border border-[#1E3352] px-3.5 py-2 rounded-xl transition-all"
             >
-              <Phone className="w-3.5 h-3.5 text-sky-400" />
-              <span>+91 7416071115</span>
+              <Phone className="w-3.5 h-3.5 text-[#EAB308] fill-current" />
+              <span className="font-semibold">+91 91216 46777</span>
             </a>
 
             <button
               onClick={() => {
                 triggerHaptic(30);
-                onOpenTestRide();
+                onOpenTestRide('CLASSIC SPORTS');
               }}
-              className="flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-sky-400 to-blue-600 hover:from-sky-300 hover:to-blue-500 text-slate-950 transition-all shadow-md shadow-sky-500/20"
+              className="flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider bg-gradient-to-r from-[#EAB308] to-[#F59E0B] hover:from-[#FBBF24] hover:to-[#EAB308] text-slate-950 transition-all shadow-md shadow-[#EAB308]/20"
             >
               <span>Book Test Ride</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -123,44 +123,50 @@ export default function Navbar({ onOpenTestRide }) {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-800 space-y-2 text-sm font-medium animate-fadeIn">
+          <div className="md:hidden py-4 border-t border-[#1E3352] space-y-2 text-sm font-medium animate-fadeIn bg-[#111E31]">
             <button
               onClick={() => scrollTo('models')}
-              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-[#15243C]"
             >
-              EV Models Lineup (Classic Sport, Sport, Nexa, Adventure, Terron+)
+              The 4 EV Bikes (CLASSIC SPORTS, NEXA, SPORTS, TERRON+)
             </button>
             <button
               onClick={() => scrollTo('technology')}
-              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-[#15243C]"
             >
               Smart Technology & BMS
             </button>
             <button
+              onClick={() => scrollTo('compare')}
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-[#15243C]"
+            >
+              Compare & Finance
+            </button>
+            <button
               onClick={() => scrollTo('founder')}
-              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-[#15243C]"
             >
               Founder's Message (Sridevi Kadiyala)
             </button>
             <button
               onClick={() => scrollTo('ordering')}
-              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-[#15243C]"
             >
               Configuration & Ordering Guide
             </button>
             <button
               onClick={() => scrollTo('contact')}
-              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800"
+              className="block w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-[#15243C]"
             >
-              Dealership & Contact Info
+              Corporate Office & Dealership
             </button>
-            <div className="pt-2 border-t border-slate-800/80">
+            <div className="pt-2 border-t border-[#1E3352]">
               <a
-                href="tel:+917416071115"
-                className="flex items-center space-x-2 text-sky-400 font-semibold px-3 py-2"
+                href="tel:+919121646777"
+                className="flex items-center space-x-2 text-[#EAB308] font-bold px-3 py-2"
               >
-                <Phone className="w-4 h-4" />
-                <span>Call Hyderabad Desk: +91 7416071115</span>
+                <Phone className="w-4 h-4 fill-current" />
+                <span>Call Hyderabad Desk: +91 91216 46777</span>
               </a>
             </div>
           </div>
