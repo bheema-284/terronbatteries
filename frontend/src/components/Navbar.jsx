@@ -50,6 +50,12 @@ export default function Navbar({ onOpenTestRide }) {
               Smart Technology
             </button>
             <button
+              onClick={() => scrollTo('compare')}
+              className="hover:text-sky-400 transition-colors"
+            >
+              Compare & Finance
+            </button>
+            <button
               onClick={() => scrollTo('founder')}
               className="hover:text-sky-400 transition-colors"
             >

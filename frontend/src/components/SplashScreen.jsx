@@ -43,7 +43,7 @@ export default function SplashScreen({ onFinish }) {
   return (
     <div
       onClick={handleSkip}
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-between p-8 bg-[#081326] transition-opacity duration-700 cursor-pointer ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-between p-8 bg-[#111E31] transition-opacity duration-700 cursor-pointer ${
         fading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >

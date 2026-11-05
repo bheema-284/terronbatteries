@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ScooterShowcase from './components/ScooterShowcase';
 import TechnologySection from './components/TechnologySection';
+import CompareSection from './components/CompareSection';
 import FoundersMessage from './components/FoundersMessage';
 import OrderingGuide from './components/OrderingGuide';
 import ContactFooter from './components/ContactFooter';
@@ -26,7 +27,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#081326] text-slate-100 flex flex-col font-sans selection:bg-sky-500 selection:text-slate-950">
+    <div className="min-h-screen bg-[#111E31] text-slate-100 flex flex-col font-sans selection:bg-sky-500 selection:text-slate-950">
       {/* 0. Cinematic Splash Screen */}
       {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
 
@@ -47,10 +48,13 @@ export default function App() {
         {/* 5. Everyday Convenience & Premium Technology (Page 8) */}
         <TechnologySection />
 
-        {/* 6. Founder's Message - Sridevi Kadiyala (Page 2) */}
+        {/* 6. Royal Enfield-Style Comparison & Financing Calculator */}
+        <CompareSection onOpenTestRide={handleOpenTestRide} />
+
+        {/* 7. Founder's Message - Sridevi Kadiyala (Page 2) */}
         <FoundersMessage />
 
-        {/* 7. Configuration & Ordering Guide (Page 8) */}
+        {/* 8. Configuration & Ordering Guide (Page 8) */}
         <OrderingGuide onOpenTestRide={() => handleOpenTestRide('Terron+')} />
       </main>
 

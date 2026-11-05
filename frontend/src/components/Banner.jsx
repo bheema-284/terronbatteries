@@ -26,7 +26,7 @@ export default function Banner() {
   return (
     <>
       {/* Top Coming Soon Banner */}
-      <aside aria-label="Official Launch Notice" className="relative z-50 bg-gradient-to-r from-[#0c1b33] via-[#102a52] to-[#0c1b33] border-b border-sky-500/30 text-white px-3 sm:px-6 py-2.5 shadow-lg">
+      <aside aria-label="Official Launch Notice" className="relative z-50 bg-[#111E31] border-b border-[#233d62] text-white px-3 sm:px-6 py-2.5 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center space-x-2.5 flex-1 min-w-0">
             {/* Pulsing Pill */}
