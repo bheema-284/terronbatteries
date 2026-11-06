@@ -29,10 +29,10 @@ export default function CompareSection({ onOpenTestRide }) {
             SMART COMPARISON & FINANCING
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 tracking-tight">
-            COMPARE <span className="text-[#EAB308]">THE 4 BIKES</span>
+            COMPARE <span className="text-[#EAB308]">THE LINEUP</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-2">
-            CLASSIC SPORTS, NEXA, SPORTS, and TERRON+ side-by-side technical benchmarks and instant EV green loan financing.
+            TERRON+, ADVENTURE, SPORTS, CLASSIC SPORTS, and NEXA side-by-side technical benchmarks and instant EV green loan financing.
           </p>
         </div>
 

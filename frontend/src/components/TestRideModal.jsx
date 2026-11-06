@@ -46,7 +46,7 @@ export default function TestRideModal({ isOpen, onClose, preselectedModel = "CLA
 
         <h3 className="text-xl sm:text-2xl font-black text-white">Book Your Test Ride</h3>
         <p className="text-xs text-slate-300 mb-6">
-          Experience the acceleration, comfort, and Smart BMS of our 4 official EV models.
+          Experience the acceleration, comfort, and Smart BMS of our 5 official EV models.
         </p>
 
         {booked ? (
@@ -66,10 +66,11 @@ export default function TestRideModal({ isOpen, onClose, preselectedModel = "CLA
                 onChange={(e) => setModel(e.target.value)}
                 className="w-full bg-[#0E1A2C] border border-[#1E3352] rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-[#EAB308] font-bold"
               >
+                <option value="TERRON+">TERRON+ (225-270 KM | ~3-Hour Fast Charge)</option>
+                <option value="ADVENTURE">ADVENTURE (225-270 KM* | 75-85 KM/H | Maxi Tourer)</option>
+                <option value="SPORTS">TERRON SPORTS (150-175 KM* | 60 KM/H | 150KG Load)</option>
                 <option value="CLASSIC SPORTS">CLASSIC SPORTS (150-175 KM* | 60 KM/H | 4.5 KW)</option>
                 <option value="NEXA">NEXA (225-270 KM* | 70-80 KM/H | Maxi Adventure)</option>
-                <option value="SPORTS">SPORTS (150-175 KM* | 60 KM/H | 150KG Load)</option>
-                <option value="TERRON+">TERRON+ (225-270 KM | ~3-Hour Fast Charge)</option>
               </select>
             </div>
 

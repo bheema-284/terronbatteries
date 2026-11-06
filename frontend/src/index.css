@@ -53,3 +53,26 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #38bdf8;
 }
+
+/* Eliminate browser click outlines, rectangular focus rings, and mobile tap boxes */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+*:focus, *:focus-visible {
+  outline: none !important;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none;
+}
+
+button:focus, button:focus-visible {
+  outline: none !important;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}

@@ -11,6 +11,172 @@ export const THEME_COLORS = {
 
 export const brochureModels = [
   {
+    id: "TRN-TERRON-PLUS",
+    name: "TERRON+",
+    badge: "ULTRA LONG-RANGE GRAND TOURER",
+    tagline: "Approx. 3 Hours (0-80%)* rapid charge and unmatched 270 KM touring range",
+    range: "225-270 KM",
+    topSpeed: "70-80 KM/H",
+    motor: "6.5 KW | 8 KW",
+    chargingTime: "APPROX. 3 HOURS (0-80%)*",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "FRONT & REAR DISC WITH CBS",
+    wheels: "12\" PREMIUM AERO TUBELESS ALLOY",
+    category: "Grand Tourer",
+    startingPrice: "₹1,29,999",
+    emiStarts: "₹3,149/mo",
+    image: "/images/scooters/adventure_green.jpg",
+    colorPalette: [
+      { 
+        name: "Green", 
+        hex: "#047857", 
+        image: "/images/scooters/adventure_green.jpg",
+        caption: "Terron+ in Rugged Emerald Green Adventure Finish"
+      },
+      { 
+        name: "Black", 
+        hex: "#18181b", 
+        image: "/images/scooters/adventure_black.jpg",
+        caption: "Terron+ in Midnight Stealth Obsidian Black"
+      },
+      { 
+        name: "Grey", 
+        hex: "#94a3b8", 
+        image: "/images/scooters/adventure_grey.jpg",
+        caption: "Terron+ in Titanium Metallic Silver Grey"
+      },
+      { 
+        name: "Red", 
+        hex: "#dc2626", 
+        image: "/images/scooters/adventure_red.jpg",
+        caption: "Terron+ in Candy Crimson Velocity Red"
+      }
+    ],
+    features: [
+      "Ultra-Fast Charging (0-80% in ~3 Hours)*",
+      "High-Output 8 KW Peak Electric Motor",
+      "Heavy-Duty Front Protective Bull-Bars",
+      "Ergonomic Stepped Grand Touring Saddle",
+      "Adaptive LED Headlamp System",
+      "Cruise Control & Reverse Assist",
+      "Smart Connected BMS with Telemetry",
+      "Optional ADAS, Blind-Spot & Rear Camera"
+    ]
+  },
+  {
+    id: "TRN-ADVENTURE",
+    name: "ADVENTURE",
+    badge: "FLAGSHIP DUAL-SPORT MAXI TOURER",
+    tagline: "Aerodynamic touring windscreen, all-terrain stance, and relentless highway dynamics",
+    range: "225-270 KM*",
+    topSpeed: "75-85 KM/H",
+    motor: "6.5 KW | 8 KW",
+    chargingTime: "APPROX. 5 - 6 HOURS",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "FRONT & REAR DISC WITH CBS",
+    wheels: "12\" ALL-TERRAIN TUBELESS ALLOY WHEELS",
+    category: "Maxi Adventure",
+    startingPrice: "₹1,24,999",
+    emiStarts: "₹2,999/mo",
+    image: "/images/scooters/adventure_tourer.jpg",
+    colorPalette: [
+      { 
+        name: "Blue", 
+        hex: "#3b82f6", 
+        image: "/images/scooters/adventure_tourer.jpg",
+        caption: "Adventure in Matte Electric Steel Blue"
+      },
+      { 
+        name: "Black", 
+        hex: "#18181b", 
+        image: "/images/scooters/adventure_tourer_black.jpg",
+        caption: "Adventure in Midnight Stealth Obsidian Black"
+      },
+      { 
+        name: "Grey", 
+        hex: "#94a3b8", 
+        image: "/images/scooters/adventure_tourer_grey.jpg",
+        caption: "Adventure in Titanium Silver Grey Finish"
+      },
+      { 
+        name: "Red", 
+        hex: "#dc2626", 
+        image: "/images/scooters/adventure_tourer_red.jpg",
+        caption: "Adventure in Velocity Crimson Red"
+      },
+      { 
+        name: "Green", 
+        hex: "#047857", 
+        image: "/images/scooters/adventure_tourer_green.jpg",
+        caption: "Adventure in British Racing Emerald Green"
+      }
+    ],
+    features: [
+      "Aerodynamic High-Windscreen Protection",
+      "Twin Projector LED Headlamps",
+      "Dual-Sport All-Terrain Grip Wheels",
+      "Dual Disc with Combined Braking System (CBS)",
+      "Digital TFT Connected Instrument Cluster",
+      "Cruise Control & Hill Hold Assist",
+      "Smart BMS with Cell Health Analytics",
+      "Fast USB-C Charging"
+    ]
+  },
+  {
+    id: "TRN-SPORTS",
+    name: "SPORTS",
+    badge: "AGGRESSIVE URBAN PERFORMER",
+    tagline: "Sport-tuned acceleration and razor-sharp city dynamics with exposed handlebar cockpit",
+    range: "150-175 KM*",
+    topSpeed: "60 KM/H",
+    motor: "4.5 KW",
+    chargingTime: "APPROX. 5 - 6 HOURS",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "FRONT & REAR DISC WITH CBS",
+    wheels: "UP TO 150KG | TUBELESS ALLOY WHEELS (12-INCH)",
+    category: "Sport Performance",
+    startingPrice: "₹91,999",
+    emiStarts: "₹2,199/mo",
+    image: "/images/scooters/sports_black.jpg",
+    colorPalette: [
+      { 
+        name: "Red", 
+        hex: "#dc2626", 
+        image: "/images/scooters/sports_red.jpg",
+        caption: "Terron Sports in Rich Metallic Crimson Red"
+      },
+      { 
+        name: "Black", 
+        hex: "#18181b", 
+        image: "/images/scooters/sports_black.jpg",
+        caption: "Terron Sports in Obsidian Matte Black Dual Profile"
+      },
+      { 
+        name: "Grey", 
+        hex: "#94a3b8", 
+        image: "/images/scooters/sports_grey.jpg",
+        caption: "Terron Sports in Titanium Metallic Silver Grey"
+      },
+      { 
+        name: "Green", 
+        hex: "#047857", 
+        image: "/images/scooters/sports_green.jpg",
+        caption: "Terron Sports in British Racing Emerald Green"
+      }
+    ],
+    features: [
+      "Sport-Tuned Instant Acceleration",
+      "Exposed Aerodynamic Handlebars",
+      "Reverse Assist Mode",
+      "Smart BMS Protection",
+      "Twin LED Headlamps",
+      "Anti-Theft Acoustic Sensor",
+      "USB Smartphone Charging",
+      "Side-Stand Safety Cut-Off",
+      "Mobile Connectivity Support"
+    ]
+  },
+  {
     id: "TRN-CLASSIC-SPORTS",
     name: "CLASSIC SPORTS",
     badge: "PREMIUM RETRO-MODERN EV",
@@ -36,7 +202,7 @@ export const brochureModels = [
       { 
         name: "Black", 
         hex: "#18181b", 
-        image: "/images/scooters/classic_black_rider.jpg",
+        image: "/images/scooters/classic_black.jpg",
         caption: "Classic Sports in Obsidian Black Gloss Finish"
       },
       { 
@@ -115,112 +281,6 @@ export const brochureModels = [
       "Cruise Control & Hill Hold Assist",
       "Smart BMS with Cell Health Analytics",
       "Fast USB-C Charging"
-    ]
-  },
-  {
-    id: "TRN-SPORTS",
-    name: "SPORTS",
-    badge: "AGGRESSIVE URBAN PERFORMER",
-    tagline: "Sport-tuned acceleration and razor-sharp city dynamics",
-    range: "150-175 KM*",
-    topSpeed: "60 KM/H",
-    motor: "4.5 KW",
-    chargingTime: "APPROX. 5 - 6 HOURS",
-    rideModes: "ECO | CITY | SPORT",
-    braking: "FRONT & REAR DISC WITH CBS",
-    wheels: "UP TO 150KG | TUBELESS ALLOY WHEELS (12-INCH)",
-    category: "Sport Performance",
-    startingPrice: "₹91,999",
-    emiStarts: "₹2,199/mo",
-    image: "/images/scooters/sports_black.jpg",
-    colorPalette: [
-      { 
-        name: "Red", 
-        hex: "#dc2626", 
-        image: "/images/scooters/sports_red.jpg",
-        caption: "Terron Sports in Rich Glossy Metallic Crimson Red"
-      },
-      { 
-        name: "Black", 
-        hex: "#18181b", 
-        image: "/images/scooters/sports_black.jpg",
-        caption: "Terron Sports in Obsidian Matte Black Dual Profile"
-      },
-      { 
-        name: "Grey", 
-        hex: "#94a3b8", 
-        image: "/images/scooters/sports_grey.jpg",
-        caption: "Terron Sports in Titanium Metallic Silver Grey"
-      },
-      { 
-        name: "Green", 
-        hex: "#047857", 
-        image: "/images/scooters/sports_green.jpg",
-        caption: "Terron Sports in British Racing Emerald Green"
-      }
-    ],
-    features: [
-      "Sport-Tuned Instant Acceleration",
-      "Exposed Aerodynamic Handlebars",
-      "Reverse Assist Mode",
-      "Smart BMS Protection",
-      "Twin LED Headlamps",
-      "Anti-Theft Acoustic Sensor",
-      "USB Smartphone Charging",
-      "Side-Stand Safety Cut-Off",
-      "Mobile Connectivity Support"
-    ]
-  },
-  {
-    id: "TRN-TERRON-PLUS",
-    name: "TERRON+",
-    badge: "ULTRA LONG-RANGE GRAND TOURER",
-    tagline: "Approx. 3 Hours (0-80%)* rapid charge and unmatched 270 KM touring range",
-    range: "225-270 KM",
-    topSpeed: "70-80 KM/H",
-    motor: "6.5 KW | 8 KW",
-    chargingTime: "APPROX. 3 HOURS (0-80%)*",
-    rideModes: "ECO | CITY | SPORT",
-    braking: "FRONT & REAR DISC WITH CBS",
-    wheels: "12\" PREMIUM AERO TUBELESS ALLOY",
-    category: "Grand Tourer",
-    startingPrice: "₹1,29,999",
-    emiStarts: "₹3,149/mo",
-    image: "/images/scooters/adventure_green.jpg",
-    colorPalette: [
-      { 
-        name: "Green", 
-        hex: "#047857", 
-        image: "/images/scooters/adventure_green.jpg",
-        caption: "Terron+ in Rugged Emerald Green Adventure Finish"
-      },
-      { 
-        name: "Black", 
-        hex: "#18181b", 
-        image: "/images/scooters/adventure_black.jpg",
-        caption: "Terron+ in Midnight Stealth Obsidian Black"
-      },
-      { 
-        name: "Grey", 
-        hex: "#94a3b8", 
-        image: "/images/scooters/adventure_grey.jpg",
-        caption: "Terron+ in Titanium Metallic Silver Grey"
-      },
-      { 
-        name: "Red", 
-        hex: "#dc2626", 
-        image: "/images/scooters/adventure_red.jpg",
-        caption: "Terron+ in Candy Crimson Velocity Red"
-      }
-    ],
-    features: [
-      "Ultra-Fast Charging (0-80% in ~3 Hours)*",
-      "High-Output 8 KW Peak Electric Motor",
-      "Ergonomic Stepped Grand Touring Saddle",
-      "Adaptive LED Headlamp System",
-      "Cruise Control & Reverse Assist",
-      "Smart Connected BMS with Telemetry",
-      "Optional ADAS, Blind-Spot & Rear Camera"
     ]
   }
 ];

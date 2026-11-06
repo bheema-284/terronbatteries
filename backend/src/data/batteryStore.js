@@ -1,8 +1,101 @@
 // Terron EV Mobility & Batteries in-memory data store
 // SRIDEWI ENERGIES PRIVATE LIMITED
-// The 4 Official EV Bikes: CLASSIC SPORTS, NEXA, SPORTS, TERRON+
+// The 5 Official EV Bikes: TERRON+, ADVENTURE, SPORTS, CLASSIC SPORTS, NEXA
 
 const evModels = [
+  {
+    id: "TRN-TERRON-PLUS",
+    name: "TERRON+",
+    badge: "Ultra Long-Range Grand Tourer",
+    tagline: "Maximum range and 3-hour rapid charging capability",
+    range: "225-270 KM",
+    topSpeed: "70-80 KM/H",
+    motor: "6.5 KW | 8 KW",
+    chargingTime: "Approx. 3 Hours (0-80%)*",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "12\" Premium Aero Tubeless Alloy",
+    category: "Grand Tourer",
+    startingPrice: "₹1,29,999",
+    colors: [
+      { name: "Green", hex: "#047857" },
+      { name: "Black", hex: "#18181b" },
+      { name: "Grey", hex: "#94a3b8" },
+      { name: "Red", hex: "#dc2626" }
+    ],
+    features: [
+      "Fast Charging: 0-80% in Approx 3 Hours*",
+      "High-Output 8 KW Peak Electric Powertrain",
+      "Ergonomic Stepped Grand Touring Saddle",
+      "Adaptive LED Lighting Matrix",
+      "Cruise Control & Reverse Assist",
+      "Smart Connected BMS with Thermal Dissipation",
+      "Optional ADAS & Blind-Spot Alerts"
+    ]
+  },
+  {
+    id: "TRN-ADVENTURE",
+    name: "ADVENTURE",
+    badge: "Flagship Dual-Sport Maxi Tourer",
+    tagline: "Aerodynamic touring windscreen, all-terrain stance, and highway endurance",
+    range: "225-270 KM*",
+    topSpeed: "75-85 KM/H",
+    motor: "6.5 KW | 8 KW",
+    chargingTime: "Approx. 5 - 6 Hours",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "12\" All-Terrain Tubeless Alloy",
+    category: "Maxi Adventure",
+    startingPrice: "₹1,24,999",
+    colors: [
+      { name: "Blue", hex: "#3b82f6" },
+      { name: "Black", hex: "#18181b" },
+      { name: "Grey", hex: "#94a3b8" },
+      { name: "Red", hex: "#dc2626" },
+      { name: "Green", hex: "#047857" }
+    ],
+    features: [
+      "Aerodynamic High-Windscreen Protection",
+      "Twin Projector LED Headlamps",
+      "Dual-Sport All-Terrain Grip Wheels",
+      "Digital TFT Connected Instrument Cluster",
+      "Cruise Control & Hill Hold Assist",
+      "Smart BMS with Cell Health Analytics",
+      "Fast USB-C Charging"
+    ]
+  },
+  {
+    id: "TRN-SPORTS",
+    name: "SPORTS",
+    badge: "High-Performance Electric Scooter",
+    tagline: "Aggressive styling and razor-sharp city agility",
+    range: "150-175 KM*",
+    topSpeed: "60 KM/H",
+    motor: "4.5 KW",
+    chargingTime: "Approx. 5 - 6 Hours",
+    rideModes: "ECO | CITY | SPORT",
+    braking: "Front & Rear Disc with CBS",
+    wheels: "Up to 150KG | Tubeless Alloy (12-inch)",
+    category: "Sport Performance",
+    startingPrice: "₹91,999",
+    colors: [
+      { name: "Red", hex: "#dc2626" },
+      { name: "Black", hex: "#18181b" },
+      { name: "Grey", hex: "#94a3b8" },
+      { name: "Green", hex: "#047857" }
+    ],
+    features: [
+      "Sport-Tuned Acceleration",
+      "Exposed Sport Handlebars",
+      "Reverse Assist Mode",
+      "Smart BMS Protection",
+      "Twin LED Headlamps",
+      "Anti-Theft Acoustic Alert",
+      "USB Charging Port",
+      "Side-Stand Safety Cut-Off",
+      "Mobile App Connectivity"
+    ]
+  },
   {
     id: "TRN-CLASSIC-SPORTS",
     name: "CLASSIC SPORTS",
@@ -64,68 +157,6 @@ const evModels = [
       "Cruise Control & Hill Hold",
       "Smart BMS with Remote Diagnostics",
       "USB Quick Charging"
-    ]
-  },
-  {
-    id: "TRN-SPORTS",
-    name: "SPORTS",
-    badge: "High-Performance Electric Scooter",
-    tagline: "Aggressive styling and razor-sharp city agility",
-    range: "150-175 KM*",
-    topSpeed: "60 KM/H",
-    motor: "4.5 KW",
-    chargingTime: "Approx. 5 - 6 Hours",
-    rideModes: "ECO | CITY | SPORT",
-    braking: "Front & Rear Disc with CBS",
-    wheels: "Up to 150KG | Tubeless Alloy (12-inch)",
-    category: "Sport Performance",
-    startingPrice: "₹91,999",
-    colors: [
-      { name: "Red", hex: "#dc2626" },
-      { name: "Black", hex: "#18181b" },
-      { name: "Grey", hex: "#94a3b8" },
-      { name: "Green", hex: "#047857" }
-    ],
-    features: [
-      "Sport-Tuned Acceleration",
-      "Exposed Sport Handlebars",
-      "Reverse Assist Mode",
-      "Smart BMS Protection",
-      "Twin LED Headlamps",
-      "Anti-Theft Acoustic Alert",
-      "USB Charging Port",
-      "Side-Stand Safety Cut-Off",
-      "Mobile App Connectivity"
-    ]
-  },
-  {
-    id: "TRN-TERRON-PLUS",
-    name: "TERRON+",
-    badge: "Ultra Long-Range Grand Tourer",
-    tagline: "Maximum range and 3-hour rapid charging capability",
-    range: "225-270 KM",
-    topSpeed: "70-80 KM/H",
-    motor: "6.5 KW | 8 KW",
-    chargingTime: "Approx. 3 Hours (0-80%)*",
-    rideModes: "ECO | CITY | SPORT",
-    braking: "Front & Rear Disc with CBS",
-    wheels: "12\" Premium Aero Tubeless Alloy",
-    category: "Grand Tourer",
-    startingPrice: "₹1,29,999",
-    colors: [
-      { name: "Green", hex: "#047857" },
-      { name: "Black", hex: "#18181b" },
-      { name: "Grey", hex: "#94a3b8" },
-      { name: "Red", hex: "#dc2626" }
-    ],
-    features: [
-      "Fast Charging: 0-80% in Approx 3 Hours*",
-      "High-Output 8 KW Peak Electric Powertrain",
-      "Ergonomic Stepped Grand Touring Saddle",
-      "Adaptive LED Lighting Matrix",
-      "Cruise Control & Reverse Assist",
-      "Smart Connected BMS with Thermal Dissipation",
-      "Optional ADAS & Blind-Spot Alerts"
     ]
   }
 ];

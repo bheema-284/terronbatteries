@@ -1,22 +1,90 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Zap, 
-  ArrowRight, 
-  ChevronLeft, 
-  ChevronRight, 
-  Compass, 
-  Gauge, 
-  BatteryCharging, 
-  Clock, 
-  ShieldCheck, 
+import {
+  Zap,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Compass,
+  Gauge,
+  BatteryCharging,
+  Clock,
+  ShieldCheck,
   IndianRupee,
   Sliders,
   CheckCircle2
 } from 'lucide-react';
 import { triggerHaptic } from '../services/mobileService';
 
-// The 4 Core Bikes for the Hero Slider requested by the user
+// The 5 Official Bikes for the Hero Slider in exact requested order:
+// 1st: TERRON+
+// 2nd: ADVENTURE
+// 3rd: SPORTS
+// 4th: CLASSIC SPORTS
+// 5th: NEXA
 const heroBikes = [
+  {
+    id: "terron-plus",
+    name: "TERRON+",
+    subtitle: "Rugged All-Terrain Grand Tourer",
+    tagline: "Unmatched 270 KM touring range paired with heavy-duty protective bull-bars and 3-hour fast charging.",
+    image: "/images/scooters/adventure_green.jpg",
+    colorBadge: "Emerald Green Adventure",
+    badgeHex: "#047857",
+    range: "225-270 KM",
+    topSpeed: "70-80 KM/H",
+    motor: "6.5 KW | 8 KW Peak",
+    charging: "⚡ ~3 Hours Fast Charge (0-80%)*",
+    price: "₹1,29,999*",
+    emi: "₹3,149/month",
+    highlights: [
+      "Rapid Charging: 0 to 80% in ~3 Hours*",
+      "Heavy-Duty Cargo & Adventure Bull-Bars",
+      "Ergonomic Stepped Grand Touring Saddle",
+      "Optional ADAS, Blind-Spot & Rear Camera Support"
+    ]
+  },
+  {
+    id: "adventure",
+    name: "ADVENTURE",
+    subtitle: "High-Performance Dual-Sport Maxi-Tourer",
+    tagline: "Dual-sport highway endurance engineered with tall touring windscreen, knobby tires, and agile road dynamics.",
+    image: "/images/scooters/adventure_tourer.jpg",
+    colorBadge: "Matte Steel Blue (Adventure)",
+    badgeHex: "#3b82f6",
+    range: "225-270 KM*",
+    topSpeed: "75-85 KM/H",
+    motor: "6.5 KW | 8 KW High-Output",
+    charging: "Approx. 5-6 Hours",
+    price: "₹1,24,999*",
+    emi: "₹2,999/month",
+    highlights: [
+      "Aerodynamic Highway Touring Windscreen",
+      "Twin Projector LED Headlamps",
+      "Dual-Sport All-Terrain Grip Wheels",
+      "Connected Digital TFT Instrument Cluster"
+    ]
+  },
+  {
+    id: "sports",
+    name: "SPORTS",
+    subtitle: "Aggressive Urban Performer",
+    tagline: "Exposed sports handlebars, 150KG payload chassis, and razor-sharp acceleration.",
+    image: "/images/scooters/sports_black.jpg",
+    colorBadge: "Obsidian Black Dual Profile",
+    badgeHex: "#18181b",
+    range: "150-175 KM*",
+    topSpeed: "60 KM/H",
+    motor: "4.5 KW Peak",
+    charging: "Approx. 5-6 Hours",
+    price: "₹91,999*",
+    emi: "₹2,199/month",
+    highlights: [
+      "Sport-Tuned Instant Throttle Response",
+      "Dual Studio Profile with Racing Accents",
+      "Robust 150KG Payload Capacity",
+      "Side-Stand Safety Cut-Off & Acoustic Anti-Theft"
+    ]
+  },
   {
     id: "classic-sports",
     name: "CLASSIC SPORTS",
@@ -41,8 +109,8 @@ const heroBikes = [
   {
     id: "nexa",
     name: "NEXA",
-    subtitle: "Flagship Adventure Maxi-Scooter",
-    tagline: "High-power highway cruiser with dual-sport knobby grip and aerodynamic touring screen.",
+    subtitle: "Flagship Aerodynamic Cruiser",
+    tagline: "High-power highway cruiser with dual-sport grip and aerodynamic touring screen.",
     image: "/images/scooters/nexa_silver.jpg",
     colorBadge: "Titanium Silver Metallic",
     badgeHex: "#94a3b8",
@@ -57,48 +125,6 @@ const heroBikes = [
       "Twin Projector LED Headlamps",
       "Dual-Sport All-Terrain Grip Wheels",
       "Connected Digital TFT Instrument Cluster"
-    ]
-  },
-  {
-    id: "sports",
-    name: "SPORTS",
-    subtitle: "Aggressive Urban Performer",
-    tagline: "Exposed sports handlebars, 150KG payload chassis, and razor-sharp acceleration.",
-    image: "/images/scooters/classic_black.jpg",
-    colorBadge: "Obsidian Black & Orange",
-    badgeHex: "#18181b",
-    range: "150-175 KM*",
-    topSpeed: "60 KM/H",
-    motor: "4.5 KW Peak",
-    charging: "Approx. 5-6 Hours",
-    price: "₹91,999*",
-    emi: "₹2,199/month",
-    highlights: [
-      "Sport-Tuned Instant Throttle Response",
-      "Dual Studio Profile with Racing Accents",
-      "Robust 150KG Payload Capacity",
-      "Side-Stand Safety Cut-Off & Acoustic Anti-Theft"
-    ]
-  },
-  {
-    id: "terron-plus",
-    name: "TERRON+",
-    subtitle: "Ultra Long-Range Grand Tourer",
-    tagline: "Unmatched 270 KM touring range paired with revolutionary 3-hour fast charging technology.",
-    image: "/images/scooters/adventure_green.jpg",
-    colorBadge: "Emerald Green Utility",
-    badgeHex: "#047857",
-    range: "225-270 KM",
-    topSpeed: "70-80 KM/H",
-    motor: "6.5 KW | 8 KW Peak",
-    charging: "⚡ ~3 Hours Fast Charge (0-80%)*",
-    price: "₹1,29,999*",
-    emi: "₹3,149/month",
-    highlights: [
-      "Rapid Charging: 0 to 80% in ~3 Hours*",
-      "Heavy-Duty Cargo & Adventure Bull-Bars",
-      "Ergonomic Stepped Grand Touring Saddle",
-      "Optional ADAS, Blind-Spot & Rear Camera Support"
     ]
   }
 ];
@@ -142,14 +168,14 @@ export default function Hero({ onOpenTestRide }) {
   const activeBike = heroBikes[currentSlide];
 
   return (
-    <section 
+    <section
       id="hero"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       className="relative pt-6 pb-16 sm:pb-24 overflow-hidden bg-[#111E31]"
     >
       {/* Background ambient lighting matching active bike */}
-      <div 
+      <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-[170px] opacity-25 pointer-events-none transition-colors duration-1000"
         style={{ backgroundColor: activeBike.badgeHex }}
       />
@@ -175,17 +201,17 @@ export default function Hero({ onOpenTestRide }) {
           </div>
         </div>
 
-        {/* The Auto-Sliding 4-Bike Carousel Showcase */}
+        {/* The Auto-Sliding 5-Bike Showcase Stage */}
         <div className="bg-gradient-to-b from-[#15243C] to-[#0E1A2C] border border-[#1E3352] rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-700">
-          
+
           {/* TOP SECTION: Main Central Bike Visual in Whole Hero Stage */}
-          <div className="relative w-full rounded-2xl overflow-hidden bg-[#0a1422] border border-[#1E3352]/80 flex items-center justify-center min-h-[320px] sm:min-h-[460px] md:min-h-[500px] shadow-inner group">
+          <div className="relative w-full rounded-2xl overflow-hidden bg-[#0a1422] border border-[#1E3352]/80 flex items-center justify-center min-h-[340px] sm:min-h-[480px] md:min-h-[520px] shadow-inner group">
             {/* Ambient Spotlight & Ground Reflection */}
-            <div 
-              className="absolute bottom-4 w-3/4 h-24 rounded-[100%] blur-3xl opacity-60 transition-colors duration-1000 pointer-events-none"
+            <div
+              className="absolute bottom-4 w-3/4 h-24 rounded-full blur-3xl opacity-50 transition-colors duration-1000 pointer-events-none"
               style={{ backgroundColor: activeBike.badgeHex }}
             />
-            
+
             {/* Large Semi-Transparent Model Watermark in Background */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.05]">
               <span className="text-7xl sm:text-9xl md:text-[13rem] font-black uppercase tracking-tighter text-white">
@@ -199,7 +225,7 @@ export default function Hero({ onOpenTestRide }) {
                 key={activeBike.image}
                 src={activeBike.image}
                 alt={`Terron ${activeBike.name}`}
-                className="max-h-[290px] sm:max-h-[420px] md:max-h-[460px] w-auto max-w-full object-contain rounded-2xl transition-all duration-700 animate-fadeIn drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
+                className="max-h-[300px] sm:max-h-[440px] md:max-h-[480px] w-auto max-w-full object-contain rounded-2xl transition-all duration-500 animate-fadeIn drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)] select-none pointer-events-none"
               />
             </div>
 
@@ -213,14 +239,14 @@ export default function Hero({ onOpenTestRide }) {
             <button
               onClick={prevSlide}
               aria-label="Previous Bike"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-[#111E31]/80 hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-[#EAB308] hover:border-[#EAB308]/60 transition-all shadow-xl active:scale-95"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-[#111E31]/80 hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-[#EAB308] hover:border-[#EAB308]/60 transition-all shadow-xl active:scale-95 outline-none focus:outline-none focus-visible:outline-none"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             <button
               onClick={nextSlide}
               aria-label="Next Bike"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-[#111E31]/80 hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-[#EAB308] hover:border-[#EAB308]/60 transition-all shadow-xl active:scale-95"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 rounded-full bg-[#111E31]/80 hover:bg-[#15243C] border border-[#1E3352] text-[#CBD5E1] hover:text-[#EAB308] hover:border-[#EAB308]/60 transition-all shadow-xl active:scale-95 outline-none focus:outline-none focus-visible:outline-none"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
@@ -228,7 +254,7 @@ export default function Hero({ onOpenTestRide }) {
 
           {/* BELOW SECTION: Details Change in the Below Along with Bike Image */}
           <div className="mt-6 sm:mt-8 space-y-6">
-            
+
             {/* Row 1: Model Title, Subtitle, Pricing & CTAs */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-[#1E3352]/70">
               <div>
@@ -268,7 +294,7 @@ export default function Hero({ onOpenTestRide }) {
                       triggerHaptic(30);
                       onOpenTestRide(activeBike.name);
                     }}
-                    className="px-6 py-3 rounded-xl font-black text-xs uppercase tracking-wider bg-gradient-to-r from-[#EAB308] via-[#FBBF24] to-[#CA8A04] hover:from-[#FBBF24] hover:to-[#EAB308] text-slate-950 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-[#EAB308]/25 active:scale-95"
+                    className="px-6 py-3 rounded-xl font-black text-xs uppercase tracking-wider bg-gradient-to-r from-[#EAB308] via-[#FBBF24] to-[#CA8A04] hover:from-[#FBBF24] hover:to-[#EAB308] text-slate-950 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-[#EAB308]/25 active:scale-95 outline-none focus:outline-none focus-visible:outline-none"
                   >
                     <span>Book Test Ride</span>
                     <ArrowRight className="w-4 h-4" />
@@ -276,7 +302,7 @@ export default function Hero({ onOpenTestRide }) {
 
                   <button
                     onClick={() => scrollToSection('models')}
-                    className="px-4 py-3 rounded-xl font-bold text-xs bg-[#0E1A2C] hover:bg-[#15243C] text-[#CBD5E1] border border-[#1E3352] hover:border-[#EAB308]/60 transition-colors"
+                    className="px-4 py-3 rounded-xl font-bold text-xs bg-[#0E1A2C] hover:bg-[#15243C] text-[#CBD5E1] border border-[#1E3352] hover:border-[#EAB308]/60 transition-colors outline-none focus:outline-none focus-visible:outline-none"
                   >
                     Configure
                   </button>
@@ -319,22 +345,22 @@ export default function Hero({ onOpenTestRide }) {
               </div>
             </div>
 
-            {/* Row 3: 4 Bike Selector Tabs & Auto-slide Indicator */}
+            {/* Row 3: 5 Bike Selector Tabs & Auto-slide Indicator */}
             <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none">
                 {heroBikes.map((bike, idx) => (
                   <button
                     key={bike.id}
                     onClick={() => goToSlide(idx)}
-                    className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                    className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all shrink-0 outline-none focus:outline-none focus-visible:outline-none ${
                       currentSlide === idx
                         ? 'bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-slate-950 font-black shadow-lg shadow-[#EAB308]/30 scale-105'
                         : 'bg-[#0E1A2C] text-[#CBD5E1] hover:text-white border border-[#1E3352]'
                     }`}
                   >
-                    <span 
-                      className="w-2.5 h-2.5 rounded-full" 
-                      style={{ backgroundColor: bike.badgeHex }} 
+                    <span
+                      className="w-2.5 h-2.5 rounded-full"
+                      style={{ backgroundColor: bike.badgeHex }}
                     />
                     <span>{bike.name}</span>
                   </button>
@@ -343,7 +369,7 @@ export default function Hero({ onOpenTestRide }) {
 
               <div className="text-[11px] text-[#CBD5E1] flex items-center space-x-2 self-end sm:self-auto">
                 <span className="w-2 h-2 rounded-full bg-[#EAB308] animate-pulse" />
-                <span>Auto-cycling through 4 models (every 4.5s)</span>
+                <span>Auto-cycling through 5 models (every 4.5s)</span>
               </div>
             </div>
 
