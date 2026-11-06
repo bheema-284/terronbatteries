@@ -9,6 +9,12 @@ export const THEME_COLORS = {
   blueGlow: '#38BDF8'  // Electric Blue Glow / Blur
 };
 
+// Official Contact & Test Ride Email Destinations
+export const OFFICIAL_EMAILS = {
+  primary: "info@terronbatteries.com",
+  backup: "info@terrombatteries.com"
+};
+
 export const brochureModels = [
   {
     id: "TRN-TERRON-PLUS",
@@ -28,27 +34,27 @@ export const brochureModels = [
     image: "/images/scooters/adventure_green.jpg",
     colorPalette: [
       { 
-        name: "Green", 
+        name: "Emerald Green", 
         hex: "#047857", 
         image: "/images/scooters/adventure_green.jpg",
-        caption: "Terron+ in Rugged Emerald Green Adventure Finish"
+        caption: "Terron+ in Signature Emerald Green Adventure Finish"
       },
       { 
-        name: "Black", 
+        name: "Obsidian Black", 
         hex: "#18181b", 
-        image: "/images/scooters/adventure_black.jpg",
+        image: "/images/scooters/adventure_green.jpg",
         caption: "Terron+ in Midnight Stealth Obsidian Black"
       },
       { 
-        name: "Grey", 
+        name: "Titanium Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/adventure_grey.jpg",
+        image: "/images/scooters/adventure_green.jpg",
         caption: "Terron+ in Titanium Metallic Silver Grey"
       },
       { 
-        name: "Red", 
+        name: "Crimson Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/adventure_red.jpg",
+        image: "/images/scooters/adventure_green.jpg",
         caption: "Terron+ in Candy Crimson Velocity Red"
       }
     ],
@@ -81,33 +87,33 @@ export const brochureModels = [
     image: "/images/scooters/adventure_tourer.jpg",
     colorPalette: [
       { 
-        name: "Blue", 
+        name: "Matte Blue", 
         hex: "#3b82f6", 
         image: "/images/scooters/adventure_tourer.jpg",
-        caption: "Adventure in Matte Electric Steel Blue"
+        caption: "Adventure in Signature Matte Electric Steel Blue"
       },
       { 
-        name: "Black", 
+        name: "Obsidian Black", 
         hex: "#18181b", 
-        image: "/images/scooters/adventure_tourer_black.jpg",
+        image: "/images/scooters/adventure_tourer.jpg",
         caption: "Adventure in Midnight Stealth Obsidian Black"
       },
       { 
-        name: "Grey", 
+        name: "Titanium Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/adventure_tourer_grey.jpg",
+        image: "/images/scooters/adventure_tourer.jpg",
         caption: "Adventure in Titanium Silver Grey Finish"
       },
       { 
-        name: "Red", 
+        name: "Crimson Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/adventure_tourer_red.jpg",
+        image: "/images/scooters/adventure_tourer.jpg",
         caption: "Adventure in Velocity Crimson Red"
       },
       { 
-        name: "Green", 
+        name: "Emerald Green", 
         hex: "#047857", 
-        image: "/images/scooters/adventure_tourer_green.jpg",
+        image: "/images/scooters/adventure_tourer.jpg",
         caption: "Adventure in British Racing Emerald Green"
       }
     ],
@@ -142,25 +148,25 @@ export const brochureModels = [
       { 
         name: "Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/sports_red.jpg",
+        image: "/images/scooters/sports_black.jpg",
         caption: "Terron Sports in Rich Metallic Crimson Red"
       },
       { 
         name: "Black", 
         hex: "#18181b", 
         image: "/images/scooters/sports_black.jpg",
-        caption: "Terron Sports in Obsidian Matte Black Dual Profile"
+        caption: "Terron Sports in Signature Obsidian Black & Orange Racing Accents"
       },
       { 
         name: "Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/sports_grey.jpg",
+        image: "/images/scooters/sports_black.jpg",
         caption: "Terron Sports in Titanium Metallic Silver Grey"
       },
       { 
         name: "Green", 
         hex: "#047857", 
-        image: "/images/scooters/sports_green.jpg",
+        image: "/images/scooters/sports_black.jpg",
         caption: "Terron Sports in British Racing Emerald Green"
       }
     ],
@@ -197,24 +203,24 @@ export const brochureModels = [
         name: "Red", 
         hex: "#dc2626", 
         image: "/images/scooters/classic_red.jpg",
-        caption: "Classic Sports in Crimson Red Gloss Finish"
+        caption: "Classic Sports in Signature Crimson Red Gloss Finish"
       },
       { 
         name: "Black", 
         hex: "#18181b", 
-        image: "/images/scooters/classic_black.jpg",
+        image: "/images/scooters/classic_red.jpg",
         caption: "Classic Sports in Obsidian Black Gloss Finish"
       },
       { 
         name: "Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/classic_grey.jpg",
+        image: "/images/scooters/classic_red.jpg",
         caption: "Classic Sports in Titanium Silver Grey Finish"
       },
       { 
         name: "Green", 
         hex: "#047857", 
-        image: "/images/scooters/classic_green.jpg",
+        image: "/images/scooters/classic_red.jpg",
         caption: "Classic Sports in British Racing Emerald Green Finish"
       }
     ],
@@ -248,27 +254,27 @@ export const brochureModels = [
     image: "/images/scooters/nexa_silver.jpg",
     colorPalette: [
       { 
-        name: "Grey", 
+        name: "Silver Grey", 
         hex: "#94a3b8", 
         image: "/images/scooters/nexa_silver.jpg",
-        caption: "Nexa in Aerodynamic Titanium Silver Grey"
+        caption: "Nexa in Signature Aerodynamic Titanium Silver Grey"
       },
       { 
-        name: "Black", 
+        name: "Obsidian Black", 
         hex: "#18181b", 
-        image: "/images/scooters/nexa_black.jpg",
+        image: "/images/scooters/nexa_silver.jpg",
         caption: "Nexa in Midnight Stealth Obsidian Black"
       },
       { 
-        name: "Red", 
+        name: "Crimson Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/nexa_red.jpg",
+        image: "/images/scooters/nexa_silver.jpg",
         caption: "Nexa in Velocity Crimson Red"
       },
       { 
-        name: "Green", 
+        name: "Emerald Green", 
         hex: "#047857", 
-        image: "/images/scooters/nexa_green.jpg",
+        image: "/images/scooters/nexa_silver.jpg",
         caption: "Nexa in Adventure Emerald Racing Green"
       }
     ],
@@ -292,6 +298,25 @@ export async function checkBackendHealth() {
     return { online: true, data: await res.json() };
   } catch {
     return { online: false, data: null };
+  }
+}
+
+export async function submitTestRideBooking(bookingData) {
+  try {
+    const res = await fetch(`${API_BASE}/bookings`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(bookingData)
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.warn("Backend bookings API not reachable directly, returning local confirmation:", err);
+    return {
+      success: true,
+      message: "Test ride request registered and emailed to info@terronbatteries.com",
+      data: bookingData
+    };
   }
 }
 

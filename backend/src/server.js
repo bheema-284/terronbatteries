@@ -9,6 +9,7 @@ const batteryRoutes = require("./routes/batteries");
 const telemetryRoutes = require("./routes/telemetry");
 const warrantyRoutes = require("./routes/warranty");
 const systemRoutes = require("./routes/system");
+const bookingRoutes = require("./routes/bookings");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -28,7 +29,8 @@ app.get("/", (req, res) => {
       health: "/api/system/health",
       batteries: "/api/batteries",
       telemetry: "/api/telemetry/live",
-      warrantyLookup: "/api/warranty/lookup/:serialNumber"
+      warrantyLookup: "/api/warranty/lookup/:serialNumber",
+      bookings: "/api/bookings (POST: Test Ride Dispatch to info@terronbatteries.com)"
     }
   });
 });
@@ -38,6 +40,7 @@ app.use("/api/system", systemRoutes);
 app.use("/api/batteries", batteryRoutes);
 app.use("/api/telemetry", telemetryRoutes);
 app.use("/api/warranty", warrantyRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 // Error handling middleware
 app.use(errorHandler);
