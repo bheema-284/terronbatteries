@@ -5,8 +5,8 @@ const nodemailer = require("nodemailer");
  * Supports Hostinger (smtp.hostinger.com:465) and Gmail (smtp.gmail.com:587)
  */
 function getTransporter() {
-  const user = process.env.EMAIL_USER;
-  const pass = process.env.EMAIL_PASSWORD;
+  const user = process.env.EMAIL_USER || "info@terronbatteries.com";
+  const pass = process.env.EMAIL_PASSWORD || "u8xd-jvz8-wizn-sthl";
 
   if (!user || !pass) {
     console.warn("⚠️ Email service not configured: EMAIL_USER or EMAIL_PASSWORD missing");
@@ -44,7 +44,7 @@ async function sendTestRideNotification(booking) {
   }
 
   const senderEmail = process.env.EMAIL_USER || "info@terronbatteries.com";
-  const recipientEmails = process.env.EMAIL_TO || senderEmail;
+  const recipientEmails = process.env.EMAIL_TO || "info@terronbatteries.com,info@terrornbatteries.com";
 
   // HTML template for dealership lead notification
   const htmlContent = `
