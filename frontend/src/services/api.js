@@ -42,19 +42,19 @@ export const brochureModels = [
       { 
         name: "Obsidian Black", 
         hex: "#18181b", 
-        image: "/images/scooters/adventure_green.jpg",
+        image: "/images/scooters/adventure_black.jpg",
         caption: "Terron+ in Midnight Stealth Obsidian Black"
       },
       { 
         name: "Titanium Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/adventure_green.jpg",
+        image: "/images/scooters/adventure_grey.jpg",
         caption: "Terron+ in Titanium Metallic Silver Grey"
       },
       { 
         name: "Crimson Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/adventure_green.jpg",
+        image: "/images/scooters/adventure_red.jpg",
         caption: "Terron+ in Candy Crimson Velocity Red"
       }
     ],
@@ -95,25 +95,25 @@ export const brochureModels = [
       { 
         name: "Obsidian Black", 
         hex: "#18181b", 
-        image: "/images/scooters/adventure_tourer.jpg",
+        image: "/images/scooters/adventure_tourer_black.jpg",
         caption: "Adventure in Midnight Stealth Obsidian Black"
       },
       { 
         name: "Titanium Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/adventure_tourer.jpg",
+        image: "/images/scooters/adventure_tourer_grey.jpg",
         caption: "Adventure in Titanium Silver Grey Finish"
       },
       { 
         name: "Crimson Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/adventure_tourer.jpg",
+        image: "/images/scooters/adventure_tourer_red.jpg",
         caption: "Adventure in Velocity Crimson Red"
       },
       { 
         name: "Emerald Green", 
         hex: "#047857", 
-        image: "/images/scooters/adventure_tourer.jpg",
+        image: "/images/scooters/adventure_tourer_green.jpg",
         caption: "Adventure in British Racing Emerald Green"
       }
     ],
@@ -148,7 +148,7 @@ export const brochureModels = [
       { 
         name: "Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/sports_black.jpg",
+        image: "/images/scooters/sports_red.jpg",
         caption: "Terron Sports in Rich Metallic Crimson Red"
       },
       { 
@@ -160,13 +160,13 @@ export const brochureModels = [
       { 
         name: "Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/sports_black.jpg",
+        image: "/images/scooters/sports_grey.jpg",
         caption: "Terron Sports in Titanium Metallic Silver Grey"
       },
       { 
         name: "Green", 
         hex: "#047857", 
-        image: "/images/scooters/sports_black.jpg",
+        image: "/images/scooters/sports_green.jpg",
         caption: "Terron Sports in British Racing Emerald Green"
       }
     ],
@@ -208,19 +208,19 @@ export const brochureModels = [
       { 
         name: "Black", 
         hex: "#18181b", 
-        image: "/images/scooters/classic_red.jpg",
+        image: "/images/scooters/classic_black.jpg",
         caption: "Classic Sports in Obsidian Black Gloss Finish"
       },
       { 
         name: "Grey", 
         hex: "#94a3b8", 
-        image: "/images/scooters/classic_red.jpg",
+        image: "/images/scooters/classic_grey.jpg",
         caption: "Classic Sports in Titanium Silver Grey Finish"
       },
       { 
         name: "Green", 
         hex: "#047857", 
-        image: "/images/scooters/classic_red.jpg",
+        image: "/images/scooters/classic_green.jpg",
         caption: "Classic Sports in British Racing Emerald Green Finish"
       }
     ],
@@ -262,19 +262,19 @@ export const brochureModels = [
       { 
         name: "Obsidian Black", 
         hex: "#18181b", 
-        image: "/images/scooters/nexa_silver.jpg",
+        image: "/images/scooters/nexa_black.jpg",
         caption: "Nexa in Midnight Stealth Obsidian Black"
       },
       { 
         name: "Crimson Red", 
         hex: "#dc2626", 
-        image: "/images/scooters/nexa_silver.jpg",
+        image: "/images/scooters/nexa_red.jpg",
         caption: "Nexa in Velocity Crimson Red"
       },
       { 
         name: "Emerald Green", 
         hex: "#047857", 
-        image: "/images/scooters/nexa_silver.jpg",
+        image: "/images/scooters/nexa_green.jpg",
         caption: "Nexa in Adventure Emerald Racing Green"
       }
     ],
