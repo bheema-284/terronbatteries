@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "description": "Terron EV Mobility & Batteries Platform - Node.js Express Backend, React Tailwind Frontend with Mobile Handling",
   "scripts": {
-    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
     "backend": "npm run dev --prefix backend",
     "frontend": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
     "build:frontend": "npm run build --prefix frontend"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.10.0"
   },
   "keywords": [
     "terron",
