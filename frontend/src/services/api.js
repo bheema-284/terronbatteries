@@ -11,8 +11,8 @@ export const THEME_COLORS = {
 
 // Official Contact & Test Ride Email Destinations
 export const OFFICIAL_EMAILS = {
-  primary: "info@terronbatteries.com",
-  backup: "info@terrombatteries.com"
+  primary: "info@terrornbatteries.com",
+  backup: "info@terronbatteries.com"
 };
 
 export const brochureModels = [

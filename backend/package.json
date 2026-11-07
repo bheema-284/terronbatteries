@@ -12,10 +12,17 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemailer": "^10.3.1"
   },
-  "keywords": ["terron", "batteries", "express", "nodejs", "telemetry", "bms"],
+  "keywords": [
+    "terron",
+    "batteries",
+    "express",
+    "nodejs",
+    "telemetry",
+    "bms"
+  ],
   "author": "Terron Batteries Team",
   "license": "ISC"
 }
-

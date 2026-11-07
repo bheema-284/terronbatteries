@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { bookings } = require("../data/batteryStore");
+const { sendTestRideNotification } = require("../services/emailService");
 
-// POST /api/bookings - Register new Test Ride and email to info@terronbatteries.com
+// POST /api/bookings - Register new Test Ride and send email notification
 router.post("/", async (req, res) => {
   try {
     const { model, name, phone, email, city, date, color, comments } = req.body;
@@ -10,7 +11,7 @@ router.post("/", async (req, res) => {
     if (!model || !name || !phone) {
       return res.status(400).json({
         success: false,
-        error: "Model, name, and phone number are required."
+        error: "Model, customer name, and phone number are required."
       });
     }
 
@@ -25,25 +26,23 @@ router.post("/", async (req, res) => {
       date: date || new Date().toISOString().split("T")[0],
       color: color || "Signature",
       comments: comments || "",
-      destinationEmail: "info@terronbatteries.com",
-      backupEmail: "info@terrombatteries.com",
+      destinationEmail: process.env.EMAIL_TO || "info@terrornbatteries.com,info@terronbatteries.com",
       status: "Confirmed",
       createdAt: new Date().toISOString()
     };
 
+    // 1. Save to in-memory store
     bookings.push(newBooking);
 
-    console.log(`[TEST RIDE BOOKING] Dispatched to info@terronbatteries.com:`);
-    console.log(`  Booking ID: ${bookingId}`);
-    console.log(`  Customer: ${name} (${phone}, ${email})`);
-    console.log(`  Model: ${model} | Color: ${newBooking.color}`);
-    console.log(`  Location: ${newBooking.city} | Date: ${newBooking.date}`);
-    console.log(`  Recipient: info@terronbatteries.com, info@terrombatteries.com`);
+    // 2. Dispatch email notification via Nodemailer
+    const emailResult = await sendTestRideNotification(newBooking);
 
     return res.status(201).json({
       success: true,
-      message: "Test ride request successfully received and dispatched to info@terronbatteries.com",
-      data: newBooking
+      message: "Test ride request successfully received and email notification processed.",
+      data: newBooking,
+      emailDispatched: emailResult.success,
+      emailDetails: emailResult
     });
   } catch (error) {
     console.error("Booking error:", error);
