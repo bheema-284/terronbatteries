@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { bookings } = require("../data/batteryStore");
-const { sendTestRideNotification } = require("../services/emailService");
+const { sendTestRideNotification, formatDDMMYYYY } = require("../services/emailService");
 
 // POST /api/bookings - Register new Test Ride and send email notification
 router.post("/", async (req, res) => {
@@ -16,6 +16,8 @@ router.post("/", async (req, res) => {
     }
 
     const bookingId = "TRN-TR-" + Date.now().toString(36).toUpperCase();
+    const formattedDate = formatDDMMYYYY(date);
+
     const newBooking = {
       bookingId,
       model,
@@ -23,10 +25,10 @@ router.post("/", async (req, res) => {
       phone,
       email: email || "Not provided",
       city: city || "Hyderabad",
-      date: date || new Date().toISOString().split("T")[0],
+      date: formattedDate, // ALWAYS DD-MM-YYYY
       color: color || "Signature",
       comments: comments || "",
-      destinationEmail: process.env.EMAIL_TO || "info@terrornbatteries.com,info@terronbatteries.com",
+      destinationEmail: process.env.EMAIL_TO || "info@terronbatteries.com,info@terrornbatteries.com",
       status: "Confirmed",
       createdAt: new Date().toISOString()
     };

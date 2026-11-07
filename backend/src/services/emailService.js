@@ -1,6 +1,33 @@
 const nodemailer = require("nodemailer");
 
 /**
+ * Helper to ensure dates are strictly in DD-MM-YYYY format
+ */
+function formatDDMMYYYY(dateStr) {
+  if (!dateStr) {
+    const now = new Date();
+    const d = String(now.getDate()).padStart(2, '0');
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const y = now.getFullYear();
+    return `${d}-${m}-${y}`;
+  }
+  const clean = String(dateStr).trim();
+  if (/^\d{2}-\d{2}-\d{4}$/.test(clean)) return clean;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(clean)) {
+    const parts = clean.split('-');
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  }
+  const parsed = new Date(clean);
+  if (!isNaN(parsed.getTime())) {
+    const d = String(parsed.getDate()).padStart(2, '0');
+    const m = String(parsed.getMonth() + 1).padStart(2, '0');
+    const y = parsed.getFullYear();
+    return `${d}-${m}-${y}`;
+  }
+  return clean;
+}
+
+/**
  * Configure Nodemailer Transporter
  * Supports Hostinger (smtp.hostinger.com:465) and Gmail (smtp.gmail.com:587)
  */
@@ -13,7 +40,6 @@ function getTransporter() {
     return null;
   }
 
-  // Determine host and port: Hostinger uses smtp.hostinger.com:465 (secure: true)
   const host = process.env.EMAIL_HOST || (user.includes("terronbatteries.com") ? "smtp.hostinger.com" : "smtp.gmail.com");
   const port = parseInt(process.env.EMAIL_PORT, 10) || (host.includes("hostinger") ? 465 : 587);
   const secure = process.env.EMAIL_SECURE !== undefined ? process.env.EMAIL_SECURE === "true" : port === 465;
@@ -33,7 +59,7 @@ function getTransporter() {
 }
 
 /**
- * Send Test Ride Email Notification to Dealership & Showroom Team
+ * Send Test Ride Email Notification to Dealership and Customer Confirmation
  * @param {Object} booking
  */
 async function sendTestRideNotification(booking) {
@@ -43,11 +69,12 @@ async function sendTestRideNotification(booking) {
     return { success: false, reason: "Transporter not configured" };
   }
 
+  const formattedDate = formatDDMMYYYY(booking.date);
   const senderEmail = process.env.EMAIL_USER || "info@terronbatteries.com";
-  const recipientEmails = process.env.EMAIL_TO || "info@terronbatteries.com,info@terrornbatteries.com";
+  const dealershipRecipients = process.env.EMAIL_TO || "info@terronbatteries.com,info@terrornbatteries.com";
 
   // HTML template for dealership lead notification
-  const htmlContent = `
+  const dealershipHtml = `
     <!DOCTYPE html>
     <html>
       <head>
@@ -111,8 +138,8 @@ async function sendTestRideNotification(booking) {
                 <span class="detail-value">${booking.city}</span>
               </div>
               <div class="detail-row">
-                <span class="detail-label">Preferred Date</span>
-                <span class="detail-value">${booking.date}</span>
+                <span class="detail-label">Preferred Date (DD-MM-YYYY)</span>
+                <span class="detail-value" style="color: #38BDF8; font-weight: 800;">${formattedDate}</span>
               </div>
               <div class="detail-row">
                 <span class="detail-label">Selected Colour</span>
@@ -138,26 +165,102 @@ async function sendTestRideNotification(booking) {
     </html>
   `;
 
-  const mailOptions = {
+  const dealershipMailOptions = {
     from: `"Terron EV Mobility" <${senderEmail}>`,
-    to: recipientEmails,
+    to: dealershipRecipients,
     replyTo: booking.email && booking.email.includes('@') ? booking.email : senderEmail,
-    subject: `🏍️ New Test Ride Booking: Terron ${booking.model} - ${booking.name} (${booking.phone})`,
-    html: htmlContent,
-    text: `New Test Ride Booking:\n\nModel: Terron ${booking.model}\nCustomer: ${booking.name}\nPhone: ${booking.phone}\nEmail: ${booking.email}\nCity: ${booking.city}\nDate: ${booking.date}\nBooking ID: ${booking.bookingId}`
+    subject: `🏍️ New Test Ride Booking: Terron ${booking.model} - ${booking.name} (${booking.phone}) - Date: ${formattedDate}`,
+    html: dealershipHtml,
+    text: `New Test Ride Booking:\n\nModel: Terron ${booking.model}\nCustomer: ${booking.name}\nPhone: ${booking.phone}\nEmail: ${booking.email}\nCity: ${booking.city}\nPreferred Date (DD-MM-YYYY): ${formattedDate}\nBooking ID: ${booking.bookingId}`
   };
 
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`✅ [Nodemailer] Test ride notification email sent successfully! Message ID: ${info.messageId}`);
-    return { success: true, messageId: info.messageId };
+    const dealershipResult = await transporter.sendMail(dealershipMailOptions);
+    console.log(`✅ [Nodemailer] Dealership notification sent! Message ID: ${dealershipResult.messageId}`);
+
+    // If customer provided an email address, also send them a branded confirmation receipt
+    let customerResult = null;
+    if (booking.email && booking.email.includes('@') && !booking.email.includes('Not provided')) {
+      const customerHtml = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0E1A2C; margin: 0; padding: 20px; color: #f1f5f9; }
+              .container { max-width: 560px; margin: 0 auto; background: #111E31; border: 1px solid #1E3352; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+              .header { background: linear-gradient(135deg, #15243C 0%, #0E1A2C 100%); padding: 24px; border-bottom: 2px solid #EAB308; text-align: center; }
+              .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; color: #ffffff; margin: 0; }
+              .sublogo { font-size: 11px; letter-spacing: 2px; color: #EAB308; text-transform: uppercase; margin-top: 4px; font-weight: 700; }
+              .body-content { padding: 30px; }
+              h2 { color: #ffffff; font-size: 20px; margin: 0 0 10px 0; font-weight: 800; }
+              p { color: #cbd5e1; font-size: 13px; line-height: 1.6; margin: 0 0 16px 0; }
+              .card { background: #0E1A2C; border: 1px solid #1E3352; border-radius: 12px; padding: 18px; margin: 20px 0; }
+              .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #1E3352; font-size: 13px; }
+              .row:last-child { border-bottom: none; }
+              .label { color: #94a3b8; }
+              .val { color: #ffffff; font-weight: 700; }
+              .footer { background: #0A1320; padding: 16px; text-align: center; font-size: 11px; color: #64748b; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1 class="logo">TERRON</h1>
+                <div class="sublogo">Sridewi Energies Private Limited</div>
+              </div>
+              <div class="body-content">
+                <h2>Test Ride Request Confirmed!</h2>
+                <p>Dear <strong>${booking.name}</strong>,</p>
+                <p>Thank you for choosing <strong>Terron EV Mobility</strong>. Your official test ride request for the <strong>Terron ${booking.model}</strong> has been received by our showroom team.</p>
+                
+                <div class="card">
+                  <div class="row"><span class="label">Booking ID:</span><span class="val" style="color: #38BDF8;">${booking.bookingId}</span></div>
+                  <div class="row"><span class="label">Vehicle Model:</span><span class="val" style="color: #EAB308;">Terron ${booking.model}</span></div>
+                  <div class="row"><span class="label">Scheduled Date:</span><span class="val" style="color: #38BDF8;">${formattedDate}</span></div>
+                  <div class="row"><span class="label">Location:</span><span class="val">${booking.city}</span></div>
+                  <div class="row"><span class="label">Contact Phone:</span><span class="val">${booking.phone}</span></div>
+                </div>
+
+                <p>Our regional Hyderabad showroom coordinator will reach out to you at <strong>${booking.phone}</strong> to confirm your slot time and prepare your scooter.</p>
+                <p>Need assistance? Contact us directly at <a href="mailto:${senderEmail}" style="color: #EAB308; text-decoration: none;">${senderEmail}</a>.</p>
+              </div>
+              <div class="footer">
+                Terron EV Mobility &bull; Sridewi Energies Private Limited &bull; Hyderabad, Telangana
+              </div>
+            </div>
+          </body>
+        </html>
+      `;
+
+      try {
+        customerResult = await transporter.sendMail({
+          from: `"Terron EV Mobility" <${senderEmail}>`,
+          to: booking.email,
+          subject: `⚡ Your Test Ride Request: Terron ${booking.model} (${formattedDate})`,
+          html: customerHtml,
+          text: `Dear ${booking.name},\n\nYour test ride booking for Terron ${booking.model} on ${formattedDate} in ${booking.city} has been received. Our dealership team will call you at ${booking.phone} to confirm your appointment.\n\nThank you,\nTerron EV Mobility Team`
+        });
+        console.log(`✅ [Nodemailer] Customer confirmation sent to ${booking.email}! Message ID: ${customerResult.messageId}`);
+      } catch (custErr) {
+        console.warn(`⚠️ [Nodemailer] Could not send customer confirmation:`, custErr.message);
+      }
+    }
+
+    return {
+      success: true,
+      dealershipMessageId: dealershipResult.messageId,
+      customerMessageId: customerResult?.messageId || null,
+      formattedDate
+    };
   } catch (error) {
     console.error(`❌ [Nodemailer] Failed to send email notification:`, error.message);
-    return { success: false, error: error.message };
+    return { success: false, error: error.message, formattedDate };
   }
 }
 
 module.exports = {
   getTransporter,
-  sendTestRideNotification
+  sendTestRideNotification,
+  formatDDMMYYYY
 };
