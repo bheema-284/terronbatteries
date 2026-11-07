@@ -20,18 +20,17 @@ import {
 import { brochureModels, LOGO_BG_COLOR } from '../services/api';
 import { triggerHaptic, shareScooter } from '../services/mobileService';
 import { playMotorRev } from '../services/soundService';
+import ColorizedScooterImage from './ColorizedScooterImage';
 
 export default function ScooterShowcase({ onOpenTestRide }) {
   // Model state defaults to SPORTS / TERRON+
   const [selectedId, setSelectedId] = useState(brochureModels[2]?.id || brochureModels[0].id);
 
   // Model-specific color selection state: isolated per bike model
-  const [modelColors, setModelColors] = useState({
-    'TRN-TERRON-PLUS': 0,   // Green
-    'TRN-ADVENTURE': 0,     // Blue
-    'TRN-SPORTS': 1,        // Black (or 0 for Red)
-    'TRN-CLASSIC-SPORTS': 0,// Red
-    'TRN-NEXA': 0           // Grey
+  const [modelColors, setModelColors] = useState(() => {
+    const init = {};
+    brochureModels.forEach(m => { init[m.id] = 0; });
+    return init;
   });
 
   const [viewMode, setViewMode] = useState('studio'); // 'studio' or 'cockpit'
@@ -177,14 +176,17 @@ export default function ScooterShowcase({ onOpenTestRide }) {
               />
 
               {viewMode === 'studio' ? (
-                /* Studio Real Scooter Photo - No filter on rider, authentic colours */
+                /* Studio Real Scooter Photo — Canvas colour replacement */
                 <div className="relative z-10 w-full flex flex-col items-center group">
                   <div className="relative overflow-hidden rounded-3xl bg-[#091320] border border-[#1E3352] shadow-2xl max-w-2xl w-full flex items-center justify-center p-3 sm:p-5">
-                    <img
-                      key={activeColor.image}
-                      src={activeColor.image}
+                    <ColorizedScooterImage
+                      key={activeModel.id}
+                      src={activeModel.image}
+                      baseColorHex={activeModel.baseBodyColor}
+                      targetColorHex={activeColor.hex}
                       alt={`${activeModel.name} in ${activeColor.name}`}
-                      className="w-full max-h-[360px] sm:max-h-[420px] object-contain object-center rounded-2xl select-none transition-all duration-300 pointer-events-none drop-shadow-xl"
+                      className="w-full max-h-[360px] sm:max-h-[420px] object-contain rounded-2xl select-none drop-shadow-xl"
+                      style={{ maxHeight: '420px', width: '100%', objectFit: 'contain' }}
                     />
 
                     {/* Color Swatch Badge on Image */}
